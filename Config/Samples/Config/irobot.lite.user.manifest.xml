@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<Manifest
+    xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html"
+    xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html"
+    xmlns:irobot="http://schemas.microsoft.com/robotics/2007/01/irobot.user.html"
+    >
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/02/irobotlite.user.html</dssp:Contract>
+      <dssp:Service>http://localhost:0/irobotlite</dssp:Service>
+      <dssp:PartnerList>
+        <!--Initialize Roomba config file -->
+        <dssp:Partner>
+          <dssp:Service>irobot.polling.user.config.xml</dssp:Service>
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

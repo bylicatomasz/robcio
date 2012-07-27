@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<!--
+//  This file is part of Microsoft Robotics Developer Studio Code Samples.
+//
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+//  $File: ServiceTutorial9.manifest.xml $ $Revision: 4 $
+-->
+<Manifest
+    xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html"
+    xmlns:d="http://schemas.microsoft.com/xw/2004/10/dssp.html">
+  <CreateServiceList>
+    
+    <ServiceRecordType>
+      <d:Contract>http://schemas.microsoft.com/2007/08/servicetutorial9/genericservice/implementation.html</d:Contract>
+    </ServiceRecordType>
+
+    <ServiceRecordType>
+      <d:Contract>http://schemas.microsoft.com/2007/08/servicetutorial9/genericservice/extension.html</d:Contract>
+    </ServiceRecordType>
+
+    <ServiceRecordType>
+      <d:Contract>http://schemas.microsoft.com/2007/08/servicetutorial9/genericservice/multi.html</d:Contract>
+    </ServiceRecordType>
+
+  </CreateServiceList>
+</Manifest>

@@ -1,0 +1,262 @@
+<?xml version="1.0"?>
+<!--This file was created with the Microsoft Visual Programming Language.-->
+<Manifest xmlns:simulateddepthcam="http://schemas.microsoft.com/robotics/simulation/services/2011/01/simulateddepthcam.user.html" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns:this="urn:uuid:d4b5d9c9-d9af-4b81-afbe-da3551172e77" xmlns:obstacleavoidancedrive="http://schemas.microsoft.com/2011/07/obstacleavoidancedrive.user.html" xmlns:simulationengine="http://schemas.microsoft.com/robotics/2006/04/simulationengine.html" xmlns:robotdashboard="http://schemas.microsoft.com/robotics/2011/07/robotdashboard.user.html" xmlns:simulation="http://schemas.microsoft.com/robotics/2006/04/simulation.html" xmlns:referenceplatform2011irarray="http://schemas.microsoft.com/robotics/2011/08/referenceplatform2011irarray.user.html" xmlns:simulatedwebcam="http://schemas.microsoft.com/2006/09/simulatedwebcam.user.html" xmlns:simulatedkinect="http://schemas.microsoft.com/2011/10/simulatedkinect.user.html" xmlns:referenceplatform2011sonararray="http://schemas.microsoft.com/robotics/2011/08/referenceplatform2011sonararray.user.html" xmlns:simulatedsonar="http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedsonar.user.html" xmlns:referenceplatform2011="http://schemas.microsoft.com/2009/03/simulatedreferenceplatform2011.user.html" xmlns:simulatedinfrared="http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedinfrared.user.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+          <dssp:Service>apartment.simulationenginestate.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:SimulationEngine</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedinfrared.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/ReferencePlatform2011FrontLeftIR</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:FrontLeftIRService</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedinfrared.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/ReferencePlatform2011FrontMiddleIR</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:FrontMiddleIRService</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedinfrared.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/ReferencePlatform2011FrontRightIR</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:FrontRightIRService</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedsonar.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/ReferencePlatform2011LeftSonar</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:LeftSonarService</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedsonar.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/ReferencePlatform2011RightSonar</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:RightSonarService</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2011/08/referenceplatform2011sonararray.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/sonar.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>referenceplatform2011sonararray:SonarLeft</dssp:Name>
+          <dssp:ServiceName>this:LeftSonarService</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/sonar.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>referenceplatform2011sonararray:SonarRight</dssp:Name>
+          <dssp:ServiceName>this:RightSonarService</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:ReferencePlatform2011SonarArray</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2011/08/referenceplatform2011irarray.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>referenceplatform2011irarray:FrontLeftIR</dssp:Name>
+          <dssp:ServiceName>this:FrontLeftIRService</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>referenceplatform2011irarray:FrontMiddleIR</dssp:Name>
+          <dssp:ServiceName>this:FrontMiddleIRService</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>referenceplatform2011irarray:FrontRightIR</dssp:Name>
+          <dssp:ServiceName>this:FrontRightIRService</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:ReferencePlatform2011IRArray</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/2011/07/obstacleavoidancedrive.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/2011/07/obstacleavoidancedrive.user.html</dssp:Contract>
+          <dssp:Service>obstacleavoidancedrive.user.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/drive.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>obstacleavoidancedrive:Drive</dssp:Name>
+          <dssp:ServiceName>this:ReferencePlatformRobot</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/01/depthcamsensor.user.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>obstacleavoidancedrive:DepthCamera</dssp:Name>
+          <dssp:ServiceName>this:SimulatedDepthCamera</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/10/infraredsensorarray.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>obstacleavoidancedrive:InfraredSensorArray</dssp:Name>
+          <dssp:ServiceName>this:ReferencePlatform2011IRArray</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/09/sonarsensorarray.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>obstacleavoidancedrive:SonarSensorArray</dssp:Name>
+          <dssp:ServiceName>this:ReferencePlatform2011SonarArray</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:ObstacleAvoidanceDrive</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2011/07/robotdashboard.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/07/robotdashboard.user.html</dssp:Contract>
+          <dssp:Service>ReferencePlatform2011Simulation.RobotDashboard.user.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/drive.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robotdashboard:Drive</dssp:Name>
+          <dssp:ServiceName>this:ObstacleAvoidanceDrive</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/01/webcamsensor.user.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robotdashboard:WebCam</dssp:Name>
+          <dssp:ServiceName>this:SimulatedKinect</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/10/infraredsensorarray.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robotdashboard:IRSensorArray</dssp:Name>
+          <dssp:ServiceName>this:ReferencePlatform2011IRArray</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/09/sonarsensorarray.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robotdashboard:SonarSensorArray</dssp:Name>
+          <dssp:ServiceName>this:ReferencePlatform2011SonarArray</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/01/depthcamsensor.user.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robotdashboard:DepthCam</dssp:Name>
+          <dssp:ServiceName>this:SimulatedKinect</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/10/pantilt.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robotdashboard:Pan_x002F_Tilt</dssp:Name>
+          <dssp:ServiceName>this:SimulatedKinect</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:RobotDashboard</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2011/01/simulateddepthcam.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/ReferencePlatform2011KinectCamera</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/webcamservice.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>simulateddepthcam:WebCam</dssp:Name>
+          <dssp:ServiceName>this:SimulatedWebcam</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:SimulatedDepthCamera</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/2009/03/simulatedreferenceplatform2011.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/2009/03/simulatedreferenceplatform2011.user.html</dssp:Contract>
+          <dssp:Service>ReferencePlatformRobot.user.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:ReferencePlatformRobot</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/2006/09/simulatedwebcam.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/ReferencePlatform2011SimulatedWebcam</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:SimulatedWebcam</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/2011/10/simulatedkinect.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/01/depthcamsensor.user.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>simulatedkinect:DepthCam</dssp:Name>
+          <dssp:ServiceName>this:SimulatedDepthCamera</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2011/01/webcamsensor.user.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>simulatedkinect:WebCam</dssp:Name>
+          <dssp:ServiceName>this:SimulatedWebcam</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/ReferencePlatform2011KinectEntity</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:SimulatedKinect</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

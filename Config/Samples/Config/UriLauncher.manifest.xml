@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<!--
+//  This file is part of Microsoft Robotics Developer Studio Code Samples.
+//
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+//  $File: UriLauncher.manifest.xml $ $Revision: 1 $
+-->
+<Manifest
+    xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html"
+    xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html"
+    >
+    <CreateServiceList>
+        <ServiceRecordType>
+            <dssp:Contract>http://schemas.microsoft.com/xw/2008/09/urilauncher.html</dssp:Contract>
+            <dssp:PartnerList>
+                <dssp:Partner>
+                    <dssp:Service>http://localhost:50000/</dssp:Service>
+                    <dssp:Name>dssp:TargetService</dssp:Name>
+                </dssp:Partner>
+            </dssp:PartnerList>
+        </ServiceRecordType>
+    </CreateServiceList>
+</Manifest>

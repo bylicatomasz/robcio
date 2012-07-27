@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Manifest xmlns:colorsegment="http://schemas.microsoft.com/robotics/2007/07/colorsegment.user.html" xmlns:multidevicewebcamservice="http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html" xmlns:this="urn:uuid:c550e483-c3ec-4030-8d5a-c18ae4ff9049" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/colorsegment.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/colorsegment.user.html</dssp:Contract>
+          <dssp:Service>ColorSegment.user.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/webcamservice.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>colorsegment:WebCam</dssp:Name>
+          <dssp:ServiceName>this:WebCam</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:ColorSegment</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html</dssp:Contract>
+          <dssp:Service>ColorSegmentWebCam.user.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:WebCam</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

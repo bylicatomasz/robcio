@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!-- //  This file is part of Microsoft Robotics Developer Studio Code Samples.
+//
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+//  $File: RoboticsTutorial7.manifest.xml $ $Revision: 1 $
+-->
+<Manifest xmlns:irobot="http://schemas.microsoft.com/robotics/2007/01/irobot.user.html" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns:this="urn:uuid:bdefbb69-ab26-4a22-9e1b-cbac52ac5d59" xmlns:speechrecognizer="http://schemas.microsoft.com/robotics/2008/02/speechrecognizer.user.html" xmlns:drive="http://schemas.microsoft.com/robotics/2006/12/irobot/drive.user.html" xmlns:roboticstutorial7="http://schemas.microsoft.com/robotics/2007/05/roboticstutorial7.user.html" xmlns:multidevicewebcamservice="http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html" xmlns:blobtracker="http://schemas.microsoft.com/robotics/2007/03/blobtracker.user.html" xmlns:stream="http://schemas.microsoft.com/robotics/2006/12/irobot/stream.user.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/05/roboticstutorial7.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/03/blobtracker.user.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>roboticstutorial7:BlobTracker</dssp:Name>
+          <dssp:ServiceName>this:blobtracker</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2008/02/speechrecognizer.user.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>roboticstutorial7:SpeechRecognizer</dssp:Name>
+          <dssp:ServiceName>this:speechrecognizer</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/drive.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>roboticstutorial7:Drive</dssp:Name>
+          <dssp:ServiceName>this:drive</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:roboticstutorial7</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2008/02/speechrecognizer.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2008/02/speechrecognizer.user.html</dssp:Contract>
+          <dssp:Service>RoboticsTutorial7SpeechRecognizer.user.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:speechrecognizer</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/01/irobot.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/01/irobot.user.html</dssp:Contract>
+          <dssp:Service>RoboticsTutorial7iRobotCreateRoombaHardware.user.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/generic/2006/12/dssstream.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>irobot:irobotstream</dssp:Name>
+          <dssp:ServiceName>this:iRobotInternalCommunications</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:irobot</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/12/irobot/drive.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/02/irobotlite.user.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>drive:iRobotUpdates</dssp:Name>
+          <dssp:ServiceName>this:irobot</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/01/irobot/create.user.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>drive:Create</dssp:Name>
+          <dssp:ServiceName>this:irobot</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:drive</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/03/blobtracker.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/03/blobtracker.user.html</dssp:Contract>
+          <dssp:Service>RoboticsTutorial7BlobTracker.user.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/webcamservice.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>blobtracker:WebCam</dssp:Name>
+          <dssp:ServiceName>this:WebCam</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:blobtracker</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html</dssp:Contract>
+      <dssp:PartnerList />
+      <Name>this:WebCam</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/12/irobot/stream.user.html</dssp:Contract>
+      <dssp:PartnerList />
+      <Name>this:iRobotInternalCommunications</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+//  This file is part of Microsoft Robotics Developer Studio Code Samples.
+//
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+//  $File: Explorer.manifest.xml $ $Revision: 8 $
+-->
+<Manifest xmlns:arcosdrive="http://schemas.microsoft.com/robotics/2006/06/arcosdrive.html" xmlns:explorer="http://schemas.microsoft.com/robotics/2006/07/explorer.html" xmlns:arcosbumper="http://schemas.microsoft.com/robotics/2006/06/arcosbumper.html" xmlns:this="urn:uuid:8312abfc-c10e-4274-94fd-b0fde9c8cd84" xmlns:arcoscore="http://schemas.microsoft.com/xw/2005/12/arcoscore.html" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <!--
+  Starts the Explorer orchestration with partner services for MobilesRobots Pioneer 3DX.
+  -->
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/arcosbumper.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/xw/2005/12/arcoscore.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>arcosbumper:Arcos</dssp:Name>
+          <dssp:ServiceName>this:ArcosCore</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:arcosbumper</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/arcosdrive.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/xw/2005/12/arcoscore.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>arcosdrive:Arcos</dssp:Name>
+          <dssp:ServiceName>this:ArcosCore</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:arcosdrive</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/07/explorer.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/2006/06/contactsensor.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>explorer:Bumper</dssp:Name>
+          <dssp:ServiceName>this:arcosbumper</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/drive.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>explorer:Drive</dssp:Name>
+          <dssp:ServiceName>this:arcosdrive</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:explorer</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/xw/2005/12/arcoscore.html</dssp:Contract>
+      <dssp:PartnerList />
+      <Name>this:ArcosCore</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

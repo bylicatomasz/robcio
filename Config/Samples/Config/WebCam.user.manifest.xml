@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<!--
+//  This file is part of Microsoft Robotics Developer Studio Code Samples.
+//
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+//  $File: WebCam.manifest.xml $ $Revision: 4 $
+-->
+<Manifest
+    xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html"
+    xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html"
+    >
+  <!-- Starts the webcam service with default settings -->
+  <CreateServiceList>
+    <ServiceRecordType>
+      <!-- Uses settings found in webcam.user.config.xml -->
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html</dssp:Contract>
+      <dssp:Service>http://localhost/webcam</dssp:Service>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>webcam.user.config.xml</dssp:Service>
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MarkRobotState xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:d="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns="http://schemas.microsoft.com/2011/11/markrobot.user.html">
+  <LastStartTime>2011-10-28T15:37:18.9675718-07:00</LastStartTime>
+  <SensorPollingInterval>100</SensorPollingInterval>
+  <BatteryVoltagePinIndex>7</BatteryVoltagePinIndex>
+  <BatteryVoltageDivider>3.21</BatteryVoltageDivider>
+  <InfraredRawValueDivisorScalar>22</InfraredRawValueDivisorScalar>
+  <InfraredDistanceExponent>-1.2</InfraredDistanceExponent>
+  <SonarTimeValueMultiplier>0.1088928</SonarTimeValueMultiplier>
+  <InfraredSensorState>
+    <Sensors xmlns="http://schemas.microsoft.com/robotics/2011/10/infraredsensorarray.html">
+      <InfraredState>
+        <HardwareIdentifier xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">2</HardwareIdentifier>
+        <ManufacturerIdentifier xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">Sharp 2Y0A21</ManufacturerIdentifier>
+        <MinDistance xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">0</MinDistance>
+        <MaxDistance xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">0</MaxDistance>
+        <DistanceMeasurement xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">0</DistanceMeasurement>
+        <Pose xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">
+          <Position xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+            <X>-0.16</X>
+            <Y>0.15</Y>
+            <Z>0.12</Z>
+          </Position>
+          <Orientation xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+            <X>0</X>
+            <Y>-0.07991469</Y>
+            <Z>0</Z>
+            <W>0.996801734</W>
+          </Orientation>
+        </Pose>
+      </InfraredState>
+      <InfraredState>
+        <HardwareIdentifier xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">1</HardwareIdentifier>
+        <ManufacturerIdentifier xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">Sharp 2Y0A21</ManufacturerIdentifier>
+        <MinDistance xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">0</MinDistance>
+        <MaxDistance xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">0</MaxDistance>
+        <DistanceMeasurement xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">0</DistanceMeasurement>
+        <Pose xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">
+          <Position xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+            <X>0</X>
+            <Y>0.15</Y>
+            <Z>0.22</Z>
+          </Position>
+          <Orientation xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+            <X>0</X>
+            <Y>0</Y>
+            <Z>0</Z>
+            <W>1</W>
+          </Orientation>
+        </Pose>
+      </InfraredState>
+      <InfraredState>
+        <HardwareIdentifier xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">0</HardwareIdentifier>
+        <ManufacturerIdentifier xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">Sharp 2Y0A21</ManufacturerIdentifier>
+        <MinDistance xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">0</MinDistance>
+        <MaxDistance xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">0</MaxDistance>
+        <DistanceMeasurement xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">0</DistanceMeasurement>
+        <Pose xmlns="http://schemas.microsoft.com/robotics/2011/10/infrared.html">
+          <Position xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+            <X>0.16</X>
+            <Y>0.15</Y>
+            <Z>0.12</Z>
+          </Position>
+          <Orientation xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+            <X>0</X>
+            <Y>0.07991469</Y>
+            <Z>0</Z>
+            <W>0.996801734</W>
+          </Orientation>
+        </Pose>
+      </InfraredState>
+    </Sensors>
+  </InfraredSensorState>
+  <SonarSensorState>
+    <Sensors xmlns="http://schemas.microsoft.com/robotics/2011/09/sonarsensorarray.html">
+      <SonarState>
+        <HardwareIdentifier xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">9</HardwareIdentifier>
+        <MaxDistance xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">0</MaxDistance>
+        <DistanceMeasurement xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">0</DistanceMeasurement>
+        <AngularRange xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">0</AngularRange>
+        <AngularResolution xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">0</AngularResolution>
+        <Pose xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">
+          <Position xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+            <X>-0.11</X>
+            <Y>0.15</Y>
+            <Z>0.19</Z>
+          </Position>
+          <Orientation xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+            <X>0</X>
+            <Y>1</Y>
+            <Z>0</Z>
+            <W>-0.43</W>
+          </Orientation>
+        </Pose>
+      </SonarState>
+      <SonarState>
+        <HardwareIdentifier xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">8</HardwareIdentifier>
+        <MaxDistance xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">0</MaxDistance>
+        <DistanceMeasurement xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">0</DistanceMeasurement>
+        <AngularRange xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">0</AngularRange>
+        <AngularResolution xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">0</AngularResolution>
+        <Pose xmlns="http://schemas.microsoft.com/robotics/2006/06/sonar.html">
+          <Position xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+            <X>0.11</X>
+            <Y>0.15</Y>
+            <Z>0.19</Z>
+          </Position>
+          <Orientation xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+            <X>0</X>
+            <Y>1</Y>
+            <Z>0</Z>
+            <W>0.43</W>
+          </Orientation>
+        </Pose>
+      </SonarState>
+    </Sensors>
+  </SonarSensorState>
+  <BatteryState>
+    <MaxBatteryPower xmlns="http://schemas.microsoft.com/2006/06/battery.html">12</MaxBatteryPower>
+    <PercentBatteryPower xmlns="http://schemas.microsoft.com/2006/06/battery.html">0</PercentBatteryPower>
+    <PercentCriticalBattery xmlns="http://schemas.microsoft.com/2006/06/battery.html">50</PercentCriticalBattery>
+  </BatteryState>
+</MarkRobotState>

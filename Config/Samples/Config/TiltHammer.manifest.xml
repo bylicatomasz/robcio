@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<Manifest
+    xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html"
+    xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html"
+    xmlns:simcommon="http://schemas.microsoft.com/robotics/2006/04/simulation.html"
+    >
+  
+  <CreateServiceList>
+
+    <!--Start simulation engine service-->
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/store/media/Collada/SolidWorks_TiltHammer.dae</dssp:Service>
+          <dssp:Name>simcommon:ColladaScene</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+    </ServiceRecordType>
+    
+  </CreateServiceList>
+
+</Manifest>

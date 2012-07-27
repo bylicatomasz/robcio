@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+//  This file is part of the Microsoft Robotics Studio Code Samples.
+//
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+//  $File$ $Revision$
+-->
+<SpeechRecognizerState xmlns="http://schemas.microsoft.com/robotics/2008/02/speechrecognizer.user.html">
+  <DictionaryGrammar>
+    <Elem>
+      <string xmlns="">Backward</string>
+      <string xmlns="">Backward</string>
+    </Elem>
+    <Elem>
+      <string xmlns="">Follow me</string>
+      <string xmlns="">FollowMe</string>
+    </Elem>
+    <Elem>
+      <string xmlns="">Forward</string>
+      <string xmlns="">Forward</string>
+    </Elem>
+    <Elem>
+      <string xmlns="">Left</string>
+      <string xmlns="">Left</string>
+    </Elem>
+    <Elem>
+      <string xmlns="">Right</string>
+      <string xmlns="">Right</string>
+    </Elem>
+    <Elem>
+      <string xmlns="">Stop moving</string>
+      <string xmlns="">Stop</string>
+    </Elem>
+  </DictionaryGrammar>
+  <GrammarType>DictionaryStyle</GrammarType>
+</SpeechRecognizerState>

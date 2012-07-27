@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Manifest
+    xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html"
+    xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html"
+    >
+  <!-- Robotics Tutorial 4 manifest requires a hardware manifest.       -->
+  <!-- When you start this manifest, also include the following:        -->
+  <!--                                                                  -->
+  <!--    -m:"samples\config\LEGO.NXT.TriBot.manifest.xml"              -->
+  <!--                                                                  -->
+  <CreateServiceList>
+
+    <!--Start tutorial 4-->
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/roboticstutorial4.user.html</dssp:Contract>
+    </ServiceRecordType>
+
+  </CreateServiceList>
+</Manifest>

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<Manifest
+    xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html"
+    xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html"
+    >
+  <!-- Robotics Tutorial 2 manifest requires a hardware manifest.                   -->
+  <!-- When you start this manifest, also include following:                        -->
+  <!--                                                                              -->
+  <!--    -m:"samples\config\LEGO.NXT.MotorTouchSensor.manifest.xml"                -->
+  <!--                                                                              -->
+  <CreateServiceList>
+
+      <!-- Start simulation engine and visualization window -->
+      <ServiceRecordType>
+        <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+        <dssp:PartnerList>
+          <dssp:Partner>
+            <dssp:Service>LEGO.NXT.Tribot.SimulationEngineState.xml</dssp:Service>
+            <dssp:Name>dssp:StateService</dssp:Name>
+          </dssp:Partner>
+        </dssp:PartnerList>
+      </ServiceRecordType>
+	  
+	  <ServiceRecordType>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/01/simpledashboard.html</dssp:Contract>
+      </ServiceRecordType>
+	  
+    <!--Start tutorial 2-->
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/roboticstutorial2.html</dssp:Contract>
+    </ServiceRecordType>
+
+  </CreateServiceList>
+</Manifest>

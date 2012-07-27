@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<Manifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    <ServiceRecordType>
+      <Contract xmlns="http://schemas.microsoft.com/xw/2004/10/dssp.html">http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</Contract>
+      <PartnerList xmlns="http://schemas.microsoft.com/xw/2004/10/dssp.html">
+        <Partner>
+          <Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</Contract>
+          <Service>severaldifferententities.simulationenginestate.xml</Service>
+          <PartnerList />
+          <Name>StateService</Name>
+        </Partner>
+      </PartnerList>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <Contract xmlns="http://schemas.microsoft.com/xw/2004/10/dssp.html">http://schemas.microsoft.com/robotics/simulation/services/2006/07/simulatedlbr3arm.user.html</Contract>
+      <PartnerList xmlns="http://schemas.microsoft.com/xw/2004/10/dssp.html">
+        <Partner>
+          <Service>http://localhost/LBR3Arm</Service>
+          <PartnerList />
+          <Name xmlns:q1="http://schemas.microsoft.com/robotics/2006/04/simulation.html">q1:Entity</Name>
+        </Partner>
+      </PartnerList>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

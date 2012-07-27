@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ReferencePlatform2011State xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2009/03/simulatedreferenceplatform2011.html">
+	<InitialPosition>
+		<X xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">4</X>
+		<Y xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">0.01</Y>
+		<Z xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">8.3</Z>
+	</InitialPosition>
+	<EntityName>ReferencePlatform2011</EntityName>
+	<driveState xmlns="http://schemas.microsoft.com/robotics/2006/05/drive.html">
+		<LeftWheel xmlns="http://schemas.microsoft.com/robotics/2006/05/motor.html">
+			<Name />
+			<Radius>0</Radius>
+			<GearRatio>0</GearRatio>
+		</LeftWheel>
+		<RightWheel xmlns="http://schemas.microsoft.com/robotics/2006/05/motor.html">
+			<Name />
+			<Radius>0</Radius>
+			<GearRatio>0</GearRatio>
+		</RightWheel>
+		<DistanceBetweenWheels>0</DistanceBetweenWheels>
+		<IsEnabled>false</IsEnabled>
+		<DriveDistanceStage>InitialRequest</DriveDistanceStage>
+		<RotateDegreesStage>InitialRequest</RotateDegreesStage>
+	</driveState>
+</ReferencePlatform2011State>

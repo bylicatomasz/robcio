@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<Manifest
+    xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html"
+    xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html"
+    xmlns:irobot="http://schemas.microsoft.com/robotics/2007/01/irobot.html"
+    >
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/01/irobot.html</dssp:Contract>
+      <dssp:Service>http://localhost:0/irobot</dssp:Service>
+      <dssp:PartnerList>
+        <!--Initialize Roomba config file -->
+        <dssp:Partner>
+          <dssp:Service>iRobot.config.xml</dssp:Service>
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <!-- Partner with the iRobot stream service
+
+             The stream service must implement the contract:
+                http://schemas.microsoft.com/robotics/generic/2006/12/dssstream.html contract
+
+             Note: irobot:irobotstream matches the partner name
+                   of the StreamOperations port in the iRobot service.
+        -->
+        <dssp:Partner>
+          <dssp:Name>irobot:irobotstream</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+    </ServiceRecordType>
+    <!--
+    The Roomba Stream Service implementation which will handle communications.
+        Default: http://schemas.microsoft.com/robotics/2006/12/irobot/stream.html
+        Wimo: http://schemas.microsoft.com/robotics/2007/02/wimostream.html
+    -->
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/12/irobot/stream.html</dssp:Contract>
+      <dssp:Service>http://localhost:0/irobot/internalstream</dssp:Service>
+      <Name>irobot:irobotstream</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

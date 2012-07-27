@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robcio", "Robcio.csproj", "{1ED13DD7-8F9A-4332-ADDD-CA7F6849298E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1ED13DD7-8F9A-4332-ADDD-CA7F6849298E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED13DD7-8F9A-4332-ADDD-CA7F6849298E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED13DD7-8F9A-4332-ADDD-CA7F6849298E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED13DD7-8F9A-4332-ADDD-CA7F6849298E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

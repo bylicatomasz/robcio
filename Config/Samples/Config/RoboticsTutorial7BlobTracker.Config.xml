@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- //  This file is part of the Microsoft Robotics Studio Code Samples.
+//
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+//  $File: RoboticsTutorial7BlobTracker.Config.xml $ $Revision: 1 $
+  -->
+<BlobTrackerState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/robotics/2007/03/blobtracker.html">
+  <ColorBins>
+  <ColorBin>
+  <Name>red</Name>
+  <RedMin>50</RedMin>
+  <RedMax>256</RedMax>
+  <GreenMin>0</GreenMin>
+  <GreenMax>10</GreenMax>
+  <BlueMin>0</BlueMin>
+  <BlueMax>10</BlueMax>
+  </ColorBin>
+  </ColorBins>
+  <TimeStamp>2007-04-04T11:04:49.2070614-07:00</TimeStamp>
+</BlobTrackerState>

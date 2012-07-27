@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ReferencePath>C:\Users\localadm\Microsoft Robotics Dev Studio 4\bin\</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartWorkingDirectory>C:\Users\localadm\Microsoft Robotics Dev Studio 4\</StartWorkingDirectory>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Users\localadm\Microsoft Robotics Dev Studio 4\bin\dsshost32.exe</StartProgram>
+    <StartArguments>/port:50000 /tcpport:50001 /manifest:"D:/Robcio/Config\Robcio.manifest.xml" /manifest:"Samples/Config\LEGO.NXT.Tribot.Simulation.manifest.xml"</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <StartWorkingDirectory>C:\Users\localadm\Microsoft Robotics Dev Studio 4\</StartWorkingDirectory>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Users\localadm\Microsoft Robotics Dev Studio 4\bin\dsshost32.exe</StartProgram>
+    <StartArguments>/port:50000 /tcpport:50001 /manifest:"D:/Robcio/Config\Robcio.manifest.xml" /manifest:"Samples/Config\LEGO.NXT.Tribot.Simulation.manifest.xml"</StartArguments>
+  </PropertyGroup>
+</Project>

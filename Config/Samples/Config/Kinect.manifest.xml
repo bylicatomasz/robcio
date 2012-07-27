@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--This file was created with the Microsoft Visual Programming Language.-->
+<Manifest xmlns:kinect="http://schemas.microsoft.com/robotics/2011/08/kinect.html" xmlns:this="urn:uuid:aba7045d-4ec7-48ab-aa7b-6002bef37b07" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2011/08/kinect.html</dssp:Contract>
+        <dssp:PartnerList>
+            <dssp:Partner>
+                <dssp:Contract>http://schemas.microsoft.com/robotics/2011/08/kinect.html</dssp:Contract>
+                <dssp:Service>kinect.config.xml</dssp:Service>
+                <dssp:PartnerList />
+                <dssp:Name>dssp:StateService</dssp:Name>
+            </dssp:Partner>
+        </dssp:PartnerList>
+      <Name>this:Kinect</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

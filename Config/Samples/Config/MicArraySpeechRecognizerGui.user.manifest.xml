@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+//
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+//  $File: MicArraySpeechRecognizerGui.manifest.xml $ $Revision: 1 $
+  -->
+<Manifest xmlns:micarrayspeechrecognizergui="http://schemas.microsoft.com/robotics/2011/06/micarrayspeechrecognizergui.user.html" 
+          xmlns:this="urn:uuid:6fdd27ef-f32d-4cec-93a2-703e5c9a5aaf" 
+          xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" 
+          xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2011/06/micarrayspeechrecognizergui.user.html</dssp:Contract>
+      <dssp:PartnerList />
+      <Name>this:SpeechRecognizerGui</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

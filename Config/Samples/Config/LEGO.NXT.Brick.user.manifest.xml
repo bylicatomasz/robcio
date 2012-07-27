@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--This file was created with the Microsoft Visual Programming Language.-->
+<Manifest xmlns:brick="http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.user.html" xmlns:this="urn:uuid:b6e1c6ef-43bd-4390-9c80-0fe6912285f5" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.user.html</dssp:Contract>
+          <dssp:Service>LEGO.NXT.Brick.user.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:LegoNXTBrickv2</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

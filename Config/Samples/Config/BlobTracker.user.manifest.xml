@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+//  This file is part of Microsoft Robotics Developer Studio Code Samples.
+//
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+//  $File: BlobTracker.manifest.xml $ $Revision: 5 $
+-->
+<Manifest xmlns:blobtracker="http://schemas.microsoft.com/robotics/2007/03/blobtracker.user.html" xmlns:multidevicewebcamservice="http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html" xmlns:this="urn:uuid:4837493e-481a-4697-814e-22e4be6ab838" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/03/blobtracker.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/webcamservice.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>blobtracker:WebCam</dssp:Name>
+          <dssp:ServiceName>this:WebCam</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:blobtracker</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html</dssp:Contract>
+          <dssp:Service>webcam.user.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:WebCam</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

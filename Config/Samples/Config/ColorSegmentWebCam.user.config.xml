@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebCamState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html">
+  <CameraDeviceName xmlns="http://schemas.microsoft.com/robotics/2006/05/webcamservice.html" />
+  <Pose xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+  <Position>
+  <X>0</X>
+  <Y>0</Y>
+  <Z>0</Z>
+  </Position>
+  <Orientation>
+  <X>0</X>
+  <Y>0</Y>
+  <Z>0</Z>
+  <W>0</W>
+  </Orientation>
+  </Pose>
+  <ImageSize xmlns="http://schemas.microsoft.com/robotics/2006/07/physicalmodel.html">
+  <X>0</X>
+  <Y>0</Y>
+  </ImageSize>
+  <ViewAngle xmlns="http://schemas.microsoft.com/robotics/2006/05/webcamservice.html">0</ViewAngle>
+  <Quality xmlns="http://schemas.microsoft.com/robotics/2006/05/webcamservice.html">0</Quality>
+  <Selected>
+  <FriendlyName />
+  <DevicePath />
+  <Format>
+  <Width>320</Width>
+  <Height>240</Height>
+  <MinFramesPerSecond>0</MinFramesPerSecond>
+  <MaxFramesPerSecond>0</MaxFramesPerSecond>
+  <Compression />
+  </Format>
+  </Selected>
+  <CaptureFile />
+</WebCamState>

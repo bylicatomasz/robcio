@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Manifest xmlns:blobtracker="http://schemas.microsoft.com/robotics/2007/03/blobtracker.user.html" xmlns:multidevicewebcamservice="http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html" xmlns:this="urn:uuid:bc062c68-41db-4583-afda-afca21199a59" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns:blobtrackercalibrate="http://schemas.microsoft.com/robotics/2007/04/blobtrackercalibrate.user.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+    <CreateServiceList>
+        <ServiceRecordType>
+            <dssp:Contract>http://schemas.microsoft.com/robotics/2007/04/blobtrackercalibrate.user.html</dssp:Contract>
+            <dssp:PartnerList>
+                <dssp:Partner>
+                    <dssp:Contract>http://schemas.microsoft.com/robotics/2007/03/blobtracker.user.html</dssp:Contract>
+                    <dssp:PartnerList />
+                    <dssp:Name>blobtrackercalibrate:blobtracker</dssp:Name>
+                    <dssp:ServiceName>this:BlobTracker</dssp:ServiceName>
+                </dssp:Partner>
+            </dssp:PartnerList>
+            <Name>this:blobtrackercalibrate</Name>
+        </ServiceRecordType>
+        <ServiceRecordType>
+            <dssp:Contract>http://schemas.microsoft.com/robotics/2007/03/blobtracker.user.html</dssp:Contract>
+            <dssp:PartnerList>
+                <dssp:Partner>
+                    <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/webcamservice.html</dssp:Contract>
+                    <dssp:PartnerList />
+                    <dssp:Name>blobtracker:WebCam</dssp:Name>
+                    <dssp:ServiceName>this:WebCam</dssp:ServiceName>
+                </dssp:Partner>
+            </dssp:PartnerList>
+            <Name>this:BlobTracker</Name>
+        </ServiceRecordType>
+        <ServiceRecordType>
+            <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/multidevicewebcamservice.user.html</dssp:Contract>
+            <dssp:PartnerList />
+            <Name>this:WebCam</Name>
+        </ServiceRecordType>
+    </CreateServiceList>
+</Manifest>
