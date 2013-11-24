@@ -14,11 +14,13 @@ namespace RobcioDSS
     public partial class BasicFormTest : Form
     {
         private Port<ActionToExecute> portTaskRobcio;
+        private Port<ActionToExecute> portTaskRobcioHighPriority;
 
-
-        public BasicFormTest( Port<ActionToExecute> _portTaskRobcio){
+        public BasicFormTest(Port<ActionToExecute> _portTaskRobcio, Port<ActionToExecute> _portTaskRobcioHighPriority)
+        {
    
             this.portTaskRobcio = _portTaskRobcio;
+            this.portTaskRobcioHighPriority = _portTaskRobcioHighPriority;
             InitializeComponent();
         }
 
@@ -51,8 +53,18 @@ namespace RobcioDSS
                 ActionToExecute actionCloseClaw = new ActionToExecute();
                 actionCloseClaw.State = LogicalState.CloseClaw;
                 portTaskRobcio.Post(actionCloseClaw);
+                
 
             }
+
+        }
+
+        private void ClearTaskButton_Click(object sender, EventArgs e)
+        {
+            
+            ActionToExecute actionClear = new ActionToExecute();
+            actionClear.State = LogicalState.ClearAllTask;
+            portTaskRobcioHighPriority.Post(actionClear);
 
         }
     }

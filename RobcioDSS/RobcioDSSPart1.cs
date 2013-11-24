@@ -19,19 +19,20 @@ using Microsoft.Dss.Core;
 namespace RobcioDSS
 {
 
-    partial class RobcioDSSService : DsspServiceBase
+    public partial class RobcioDSSService : DsspServiceBase
     {
 
 
 
         #region Robcio_VaribleTaskQuota
 
+        public List<ActionToExecute> actionToDo = new List<ActionToExecute>();
         private Port<ActionToExecute> portTaskRobcio = new Port<ActionToExecute>();
+        private Port<ActionToExecute> portTaskRobcioHighPriority = new Port<ActionToExecute>();
+        
+        public Dispatcher dispatcherPort;
 
-
-        private Dispatcher dispatcherPort;
-
-        private DispatcherQueue taskQueue;
+        public DispatcherQueue taskQueue;
 
         private List<ITask> list = new List<ITask>();
 
@@ -57,24 +58,25 @@ namespace RobcioDSS
 
             dispatcherPort = new Dispatcher(
                   0, // zero means use one thread per CPU, or 2 if only one CPU present
-                  "sample dispatcher" // friendly name assgined to OS threads
+                  "RobcioDispatcher" // friendly name assgined to OS threads
                   );
 
             taskQueue = new DispatcherQueue(
-                   "sample queue", // friendly name
+                   "RobcioQueue", // friendly name
                    dispatcherPort // dispatcher instance
                );
-
+            
+            
             Arbiter.Activate(taskQueue,
+                
 
                    Arbiter.Interleave(
-                       new TeardownReceiverGroup(),
+                       new TeardownReceiverGroup(
+                            Arbiter.ReceiveWithIterator(false, portTaskRobcioHighPriority, ExecuteActionHighPriority)
+                           ),
                        new ExclusiveReceiverGroup
                        (
-
-                     Arbiter.ReceiveWithIterator(true, portTaskRobcio, ExecuteAction)
-    
-
+                        Arbiter.ReceiveWithIterator(true, portTaskRobcio, ExecuteAction)    
                        ),
                        new ConcurrentReceiverGroup()));
 
@@ -86,19 +88,13 @@ namespace RobcioDSS
 
         private IEnumerator<ITask> CreateForm()
         {
-        
-
-
             WinFormsServicePort.Post(new RunForm(StartForm));
-
-
-
             yield break;
 
         }
         private System.Windows.Forms.Form StartForm()
         {
-            BasicFormTest form = new BasicFormTest(portTaskRobcio);
+            BasicFormTest form = new BasicFormTest(portTaskRobcio, portTaskRobcioHighPriority);
             return form;
         }
 
@@ -133,6 +129,19 @@ namespace RobcioDSS
             //LogInfo("Int is: " + i);
             LogInfo(LogGroups.Console, "Int is: " + i);
         }
+        public IEnumerator<ITask> ExecuteActionHighPriority(ActionToExecute action)
+        {
+       
+            if (action.State.Equals(LogicalState.ClearAllTask))
+            {
+                   portTaskRobcio.Clear();
+                   taskQueue.Suspend();
+                   taskQueue.Dispose();
+                   return InitializePortTask();
+            }
+            return null;
+
+        }
         public IEnumerator<ITask> ExecuteAction(ActionToExecute action) {
 
             if (action.State.Equals(LogicalState.OpenClaw))
@@ -146,46 +155,10 @@ namespace RobcioDSS
                 LogInfo(LogGroups.Console, "Int is: Close" );
                  return CloseClaw();
             }
-
-
             return null;
-            
-            
-            
-        }
-        /*
-        private void ExecuteAction(ActionToExecute action) {
 
-            LogInfo(LogGroups.Console, "ActionToExecute: " + action.State.ToString());
-            LogInfo(LogGroups.Console, "Quote Task: " + taskQueue.Count);
-            _state.State = action.State;
-
-            if(action.State.Equals(LogicalState.OpenClaw)){
-                OpenClaw();
-            }else{
-                CloseClaw();
-            }
-            
-
-         //   OnRobcioStateChange();   
         }
 
-        private void OnRobcioStateChange()
-        {
-            if (MainPortInterleave.ArbiterState != Microsoft.Ccr.Core.Arbiters.ArbiterTaskState.Done)
-            {
-                Port<EmptyValue> port = new Port<EmptyValue>();
-
-                MainPortInterleave.CombineWith(
-                    Arbiter.Interleave(
-                        new TeardownReceiverGroup(),
-                        new ExclusiveReceiverGroup(Arbiter.ReceiveWithIterator<EmptyValue>(false, port, StateChange)),
-                        new ConcurrentReceiverGroup()));
-
-                port.Post(EmptyValue.SharedInstance);
-            }
-        }
-        */
          
         #endregion
 

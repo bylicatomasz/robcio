@@ -397,7 +397,9 @@ namespace RobcioDSS.Proxy {
         
         Launch = 7,
         
-        FinalStop = 8,
+        ClearAllTask = 8,
+        
+        FinalStop = 9,
     }
     
     [global::System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema=false)]

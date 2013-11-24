@@ -19,7 +19,7 @@ namespace RobcioDSS
     [Contract(Contract.Identifier)]
     [DisplayName("RobcioDSS")]
     [Description("RobcioDSS service (no description provided)")]
-    partial class RobcioDSSService : DsspServiceBase
+    public partial class RobcioDSSService : DsspServiceBase
     {
         /// <summary>
         /// Service state
@@ -146,7 +146,7 @@ namespace RobcioDSS
         protected override void Start()
         {
             base.Start();
-
+            
             // We span an iterator to initialize the robot
             SpawnIterator(Initialize);
             SpawnIterator(InitializeMindRobcio);

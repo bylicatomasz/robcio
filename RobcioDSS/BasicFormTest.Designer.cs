@@ -31,6 +31,7 @@
             this.ClawOpenButton = new System.Windows.Forms.Button();
             this.ClawCloseButton = new System.Windows.Forms.Button();
             this.ClawBrawoButton = new System.Windows.Forms.Button();
+            this.ClearTaskButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ClawOpenButton
@@ -63,11 +64,22 @@
             this.ClawBrawoButton.UseVisualStyleBackColor = true;
             this.ClawBrawoButton.Click += new System.EventHandler(this.ClawBrawoButton_Click);
             // 
+            // ClearTaskButton
+            // 
+            this.ClearTaskButton.Location = new System.Drawing.Point(185, 137);
+            this.ClearTaskButton.Name = "ClearTaskButton";
+            this.ClearTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearTaskButton.TabIndex = 3;
+            this.ClearTaskButton.Text = "ClearTask";
+            this.ClearTaskButton.UseVisualStyleBackColor = true;
+            this.ClearTaskButton.Click += new System.EventHandler(this.ClearTaskButton_Click);
+            // 
             // BasicFormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.ClearTaskButton);
             this.Controls.Add(this.ClawBrawoButton);
             this.Controls.Add(this.ClawCloseButton);
             this.Controls.Add(this.ClawOpenButton);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Button ClawOpenButton;
         private System.Windows.Forms.Button ClawCloseButton;
         private System.Windows.Forms.Button ClawBrawoButton;
+        private System.Windows.Forms.Button ClearTaskButton;
     }
 }

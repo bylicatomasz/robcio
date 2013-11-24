@@ -132,6 +132,11 @@ namespace RobcioDSS
         /// </summary>
         Launch,
         /// <summary>
+        /// The robot Clear
+        /// </summary>        
+        ClearAllTask,
+
+        /// <summary>
         /// The robot stops
         /// </summary>
         FinalStop
