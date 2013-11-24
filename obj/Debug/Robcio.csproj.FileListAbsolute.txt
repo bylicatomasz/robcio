@@ -1,5 +1,0 @@
-C:\Users\localadm\Microsoft Robotics Dev Studio 4\bin\Robcio.Y2012.M07.dll
-C:\Users\localadm\Microsoft Robotics Dev Studio 4\bin\Robcio.Y2012.M07.pdb
-D:\Robcio\obj\Debug\ResolveAssemblyReference.cache
-D:\Robcio\obj\Debug\Robcio.Y2012.M07.dll
-D:\Robcio\obj\Debug\Robcio.Y2012.M07.pdb
