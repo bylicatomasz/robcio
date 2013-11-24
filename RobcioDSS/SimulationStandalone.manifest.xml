@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Manifest xmlns:this="urn:uuid:9a59d999-a2fb-4743-8952-3a216d2e7e8e"
+          xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html"
+          xmlns:simcommon="http://schemas.microsoft.com/robotics/2006/04/simulation.html"
+          xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    
+    <!-- Environment -->
+
+    <ServiceRecordType>
+      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/office.html</dssp:Contract>
+      <dssp:PartnerList />
+      <Name>this:officelegonxt</Name>
+    </ServiceRecordType>
+    
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+          <dssp:Service>simulationstate.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:simulationengine</Name>
+    </ServiceRecordType>
+
+    <!-- Drive -->
+
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulateddifferentialdrive.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT</dssp:Service>
+          <dssp:Name>simcommon:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Drive</Name>
+    </ServiceRecordType>
+
+    <!-- Claw -->
+
+    <ServiceRecordType>
+      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/motor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT</dssp:Service>
+          <dssp:Name>simcommon:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Claw</Name>
+    </ServiceRecordType>
+
+    <!-- Sensor -->
+
+    <ServiceRecordType>
+      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/ultrasonicsensor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT-Sonar</dssp:Service>
+          <dssp:Name>simcommon:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Sonar</Name>
+    </ServiceRecordType>
+
+    <ServiceRecordType>
+      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/lightsensor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT-LightSensor</dssp:Service>
+          <dssp:Name>simcommon:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Light</Name>
+    </ServiceRecordType>
+
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedbumper.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT-Bumper</dssp:Service>
+          <dssp:Name>simcommon:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Bumper</Name>
+    </ServiceRecordType>
+
+  </CreateServiceList>
+</Manifest>

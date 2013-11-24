@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NXTManagerState xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:d="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns="http://www.simplysim.net/2010/09/robotics/nxt/services/manager.html">
+  <Services />
+  <UserServices>
+    <Elem>
+      <string xmlns="">Sample1Service</string>
+      <q1:UserService xmlns:q1="http://www.simplysim.net/2010/09/robotics/nxt/services/manager.html">
+        <q1:Id>Sample1Service</q1:Id>
+        <q1:Service Name="SimplySim.Robotics.Nxt.Samples.Sample1.Sample1Service">
+          <DisplayName xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">SimplySim NXT Sample1</DisplayName>
+          <Description xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">Simple Movements</Description>
+          <Contract xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">http://www.simplysim.net/robotics/generic/2009/06/nxtsamples/sample1.html</Contract>
+          <Partners xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <Partner Name="Drive" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/05/drive.html</Contract>
+            </Partner>
+            <Partner Name="Claw" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/05/motor.html</Contract>
+            </Partner>
+            <Partner Name="Light" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</Contract>
+            </Partner>
+            <Partner Name="Sonar" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</Contract>
+            </Partner>
+            <Partner Name="Bumper" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/2006/06/contactsensor.html</Contract>
+            </Partner>
+          </Partners>
+          <ActivationSettings xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <ServiceImplementationClass>SimplySim.Robotics.Nxt.Samples.Sample1.Sample1Service</ServiceImplementationClass>
+            <ShareDispatcher>true</ShareDispatcher>
+            <ExecutionUnits>1</ExecutionUnits>
+          </ActivationSettings>
+          <Assembly xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <Name>SimplySim.Robotics.Nxt.Samples.Y2008.M12, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0990fc483ca2a54e</Name>
+            <Company>SimplySim</Company>
+            <Copyright>Copyright © SimplySim 2008</Copyright>
+            <Trademark />
+          </Assembly>
+          <MainPort Prefix="/sample1" xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <Type Name="SimplySim.Robotics.Nxt.Samples.Sample1.Proxy.Sample1Operations" />
+            <Operations>
+              <DsspOperationSummary>
+                <Action>Lookup</Action>
+                <OperationType Name="Microsoft.Dss.ServiceModel.Dssp.DsspDefaultLookup">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </OperationType>
+                <RequestType Name="Microsoft.Dss.ServiceModel.Dssp.LookupRequestType">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </RequestType>
+                <ResponseTypes>
+                  <Type Name="Microsoft.Dss.ServiceModel.Dssp.LookupResponse">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                  <Type Name="W3C.Soap.Fault">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                </ResponseTypes>
+              </DsspOperationSummary>
+              <DsspOperationSummary>
+                <Action>Drop</Action>
+                <OperationType Name="Microsoft.Dss.ServiceModel.Dssp.DsspDefaultDrop">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </OperationType>
+                <RequestType Name="Microsoft.Dss.ServiceModel.Dssp.DropRequestType">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </RequestType>
+                <ResponseTypes>
+                  <Type Name="Microsoft.Dss.ServiceModel.Dssp.DefaultDropResponseType">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                  <Type Name="W3C.Soap.Fault">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                </ResponseTypes>
+              </DsspOperationSummary>
+            </Operations>
+          </MainPort>
+          <AlternatePorts xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html" />
+        </q1:Service>
+        <q1:PartnerLinks>
+          <Elem>
+            <string xmlns="">Drive</string>
+            <string xmlns="">Drive</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Claw</string>
+            <string xmlns="">Claw</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Light</string>
+            <string xmlns="">Light</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Sonar</string>
+            <string xmlns="">Sonar</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Bumper</string>
+            <string xmlns="">Bumper</string>
+          </Elem>
+        </q1:PartnerLinks>
+      </q1:UserService>
+    </Elem>
+    <Elem>
+      <string xmlns="">Sample2Service</string>
+      <q1:UserService xmlns:q1="http://www.simplysim.net/2010/09/robotics/nxt/services/manager.html">
+        <q1:Id>Sample2Service</q1:Id>
+        <q1:Service Name="SimplySim.Robotics.Nxt.Samples.Sample2.Sample2Service">
+          <DisplayName xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">SimplySim NXT Sample2</DisplayName>
+          <Description xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">Exploration of open space</Description>
+          <Contract xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">http://www.simplysim.net/robotics/generic/2009/06/nxtsamples/sample2.html</Contract>
+          <Partners xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <Partner Name="Drive" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/05/drive.html</Contract>
+            </Partner>
+            <Partner Name="Claw" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/05/motor.html</Contract>
+            </Partner>
+            <Partner Name="Light" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</Contract>
+            </Partner>
+            <Partner Name="Sonar" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</Contract>
+            </Partner>
+            <Partner Name="Bumper" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/2006/06/contactsensor.html</Contract>
+            </Partner>
+          </Partners>
+          <ActivationSettings xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <ServiceImplementationClass>SimplySim.Robotics.Nxt.Samples.Sample2.Sample2Service</ServiceImplementationClass>
+            <ShareDispatcher>true</ShareDispatcher>
+            <ExecutionUnits>1</ExecutionUnits>
+          </ActivationSettings>
+          <Assembly xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <Name>SimplySim.Robotics.Nxt.Samples.Y2008.M12, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0990fc483ca2a54e</Name>
+            <Company>SimplySim</Company>
+            <Copyright>Copyright © SimplySim 2008</Copyright>
+            <Trademark />
+          </Assembly>
+          <MainPort Prefix="/sample2" xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <Type Name="SimplySim.Robotics.Nxt.Samples.Sample2.Proxy.Sample2Operations" />
+            <Operations>
+              <DsspOperationSummary>
+                <Action>Lookup</Action>
+                <OperationType Name="Microsoft.Dss.ServiceModel.Dssp.DsspDefaultLookup">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </OperationType>
+                <RequestType Name="Microsoft.Dss.ServiceModel.Dssp.LookupRequestType">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </RequestType>
+                <ResponseTypes>
+                  <Type Name="Microsoft.Dss.ServiceModel.Dssp.LookupResponse">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                  <Type Name="W3C.Soap.Fault">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                </ResponseTypes>
+              </DsspOperationSummary>
+              <DsspOperationSummary>
+                <Action>Drop</Action>
+                <OperationType Name="Microsoft.Dss.ServiceModel.Dssp.DsspDefaultDrop">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </OperationType>
+                <RequestType Name="Microsoft.Dss.ServiceModel.Dssp.DropRequestType">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </RequestType>
+                <ResponseTypes>
+                  <Type Name="Microsoft.Dss.ServiceModel.Dssp.DefaultDropResponseType">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                  <Type Name="W3C.Soap.Fault">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                </ResponseTypes>
+              </DsspOperationSummary>
+            </Operations>
+          </MainPort>
+          <AlternatePorts xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html" />
+        </q1:Service>
+        <q1:PartnerLinks>
+          <Elem>
+            <string xmlns="">Drive</string>
+            <string xmlns="">Drive</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Claw</string>
+            <string xmlns="">Claw</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Light</string>
+            <string xmlns="">Light</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Sonar</string>
+            <string xmlns="">Sonar</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Bumper</string>
+            <string xmlns="">Bumper</string>
+          </Elem>
+        </q1:PartnerLinks>
+      </q1:UserService>
+    </Elem>
+    <Elem>
+      <string xmlns="">Sample3Service</string>
+      <q1:UserService xmlns:q1="http://www.simplysim.net/2010/09/robotics/nxt/services/manager.html">
+        <q1:Id>Sample3Service</q1:Id>
+        <q1:Service Name="SimplySim.Robotics.Nxt.Samples.Sample3.Sample3Service">
+          <DisplayName xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">SimplySim NXT Sample3</DisplayName>
+          <Description xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">Follows the line and catches the ball</Description>
+          <Contract xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">http://www.simplysim.net/robotics/generic/2009/06/nxtsamples/sample3.html</Contract>
+          <Partners xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <Partner Name="Drive" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/05/drive.html</Contract>
+            </Partner>
+            <Partner Name="Claw" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/05/motor.html</Contract>
+            </Partner>
+            <Partner Name="Light" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</Contract>
+            </Partner>
+            <Partner Name="Sonar" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</Contract>
+            </Partner>
+            <Partner Name="Bumper" CreationPolicy="UsePartnerListEntry">
+              <Contract>http://schemas.microsoft.com/2006/06/contactsensor.html</Contract>
+            </Partner>
+          </Partners>
+          <ActivationSettings xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <ServiceImplementationClass>SimplySim.Robotics.Nxt.Samples.Sample3.Sample3Service</ServiceImplementationClass>
+            <ShareDispatcher>true</ShareDispatcher>
+            <ExecutionUnits>1</ExecutionUnits>
+          </ActivationSettings>
+          <Assembly xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <Name>SimplySim.Robotics.Nxt.Samples.Y2008.M12, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0990fc483ca2a54e</Name>
+            <Company>SimplySim</Company>
+            <Copyright>Copyright © SimplySim 2008</Copyright>
+            <Trademark />
+          </Assembly>
+          <MainPort Prefix="/sample3" xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html">
+            <Type Name="SimplySim.Robotics.Nxt.Samples.Sample3.Proxy.Sample3Operations" />
+            <Operations>
+              <DsspOperationSummary>
+                <Action>Lookup</Action>
+                <OperationType Name="Microsoft.Dss.ServiceModel.Dssp.DsspDefaultLookup">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </OperationType>
+                <RequestType Name="Microsoft.Dss.ServiceModel.Dssp.LookupRequestType">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </RequestType>
+                <ResponseTypes>
+                  <Type Name="Microsoft.Dss.ServiceModel.Dssp.LookupResponse">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                  <Type Name="W3C.Soap.Fault">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                </ResponseTypes>
+              </DsspOperationSummary>
+              <DsspOperationSummary>
+                <Action>Drop</Action>
+                <OperationType Name="Microsoft.Dss.ServiceModel.Dssp.DsspDefaultDrop">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </OperationType>
+                <RequestType Name="Microsoft.Dss.ServiceModel.Dssp.DropRequestType">
+                  <Assembly>Microsoft.Dss.Base</Assembly>
+                </RequestType>
+                <ResponseTypes>
+                  <Type Name="Microsoft.Dss.ServiceModel.Dssp.DefaultDropResponseType">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                  <Type Name="W3C.Soap.Fault">
+                    <Assembly>Microsoft.Dss.Base</Assembly>
+                  </Type>
+                </ResponseTypes>
+              </DsspOperationSummary>
+            </Operations>
+          </MainPort>
+          <AlternatePorts xmlns="http://schemas.microsoft.com/dss/2008/05/contractmodel.html" />
+        </q1:Service>
+        <q1:PartnerLinks>
+          <Elem>
+            <string xmlns="">Drive</string>
+            <string xmlns="">Drive</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Claw</string>
+            <string xmlns="">Claw</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Light</string>
+            <string xmlns="">Light</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Sonar</string>
+            <string xmlns="">Sonar</string>
+          </Elem>
+          <Elem>
+            <string xmlns="">Bumper</string>
+            <string xmlns="">Bumper</string>
+          </Elem>
+        </q1:PartnerLinks>
+      </q1:UserService>
+    </Elem>
+  </UserServices>
+</NXTManagerState>

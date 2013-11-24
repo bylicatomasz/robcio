@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Manifest xmlns:officelegonxt="http://www.simplysim.net/robotics/environments/officelegonxt.html" 
+          xmlns:simulationengine="http://schemas.microsoft.com/robotics/2006/04/simulationengine.html"
+          xmlns:this="urn:uuid:9a59d999-a2fb-4743-8952-3a216d2e7e8e"
+          xmlns:nxtmanager="http://www.simplysim.net/2010/09/robotics/nxt/services/manager.html"
+          xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html"
+          xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/manager.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>nxtmanager:Simengine</dssp:Name>
+          <dssp:ServiceName>this:simulationengine</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/manager.html</dssp:Contract>
+          <dssp:Service>NXTManager.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:nxtmanager</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/office.html</dssp:Contract>
+      <dssp:PartnerList />
+      <Name>this:officelegonxt</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+          <dssp:Service>simulationstate.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:simulationengine</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

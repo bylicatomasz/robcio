@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TouchSensorState xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:d="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns="http://schemas.microsoft.com/robotics/2007/07/lego/nxt/touchsensor.html">
+  <Connected>false</Connected>
+  <SensorPort>Sensor1</SensorPort>
+  <PollingFrequencyMs>100</PollingFrequencyMs>
+  <TouchSensorOn>false</TouchSensorOn>
+  <TimeStamp>0001-01-01T00:00:00</TimeStamp>
+</TouchSensorState>

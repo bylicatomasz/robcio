@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<Manifest xmlns:brick="http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.html" 
+          xmlns:motor="http://schemas.microsoft.com/robotics/2007/07/lego/nxt/motor.html" 
+          xmlns:this="urn:uuid:18d68dfb-867d-45d4-82e7-b2a4a02e8c0f" 
+          xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" 
+          xmlns:drive="http://schemas.microsoft.com/robotics/2007/07/lego/nxt/drive.html" 
+          xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  
+  <CreateServiceList>
+    
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.html</dssp:Contract>
+          <dssp:Service>LegoNXTBrickv2.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Brick</Name>
+    </ServiceRecordType>
+    
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/drive.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/drive.html</dssp:Contract>
+          <dssp:Service>LegoNXTDrivev2.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>drive:brick</dssp:Name>
+          <dssp:ServiceName>this:Brick</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Drive</Name>
+    </ServiceRecordType>
+   
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/motor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/motor.html</dssp:Contract>
+          <dssp:Service>LegoNXTMotorv2.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>motor:brick</dssp:Name>
+          <dssp:ServiceName>this:Brick</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Claw</Name>
+    </ServiceRecordType>
+
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/sonarsensor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/sonarsensor.html</dssp:Contract>
+          <dssp:Service>LegoNXTSonarv2.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>motor:brick</dssp:Name>
+          <dssp:ServiceName>this:Brick</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Sonar</Name>
+    </ServiceRecordType>
+
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/touchsensor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/touchsensor.html</dssp:Contract>
+          <dssp:Service>LegoNXTTouchv2.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>motor:brick</dssp:Name>
+          <dssp:ServiceName>this:Brick</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Bumper</Name>
+    </ServiceRecordType>
+
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/lightsensor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/lightsensor.html</dssp:Contract>
+          <dssp:Service>LegoNXTLightv2.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>motor:brick</dssp:Name>
+          <dssp:ServiceName>this:Brick</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Light</Name>
+    </ServiceRecordType>
+
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/soundsensor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/soundsensor.html</dssp:Contract>
+          <dssp:Service>LegoNXTSoundv2.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2007/07/lego/nxt/brick.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>motor:brick</dssp:Name>
+          <dssp:ServiceName>this:Brick</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Sound</Name>
+    </ServiceRecordType>
+    
+  </CreateServiceList>
+</Manifest>

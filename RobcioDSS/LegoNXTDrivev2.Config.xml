@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DriveState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/robotics/2007/07/lego/nxt/drive.html">
+	<Connected>false</Connected>
+  <DistanceBetweenWheels>0.115</DistanceBetweenWheels>
+  <LeftWheel>
+    <MotorPort>MotorC</MotorPort>
+    <ReversePolarity>false</ReversePolarity>
+    <WheelDiameter>0.055</WheelDiameter>
+  </LeftWheel>
+  <RightWheel>
+    <MotorPort>MotorB</MotorPort>
+    <ReversePolarity>false</ReversePolarity>
+    <WheelDiameter>0.055</WheelDiameter>
+  </RightWheel>
+  <PollingFrequencyMs>100</PollingFrequencyMs>
+  <RuntimeStatistics>
+    <LeftPowerCurrent>0</LeftPowerCurrent>
+    <LeftPowerTarget>0</LeftPowerTarget>
+    <LeftEncoderTimeStamp>0001-01-01T00:00:00</LeftEncoderTimeStamp>
+    <LeftEncoderCurrent>0</LeftEncoderCurrent>
+    <LeftEncoderTarget>0</LeftEncoderTarget>
+    <LeftMotorRpm>0</LeftMotorRpm>
+    <RightPowerCurrent>0</RightPowerCurrent>
+    <RightPowerTarget>0</RightPowerTarget>
+    <RightEncoderTimeStamp>0001-01-01T00:00:00</RightEncoderTimeStamp>
+    <RightEncoderCurrent>0</RightEncoderCurrent>
+    <RightEncoderTarget>0</RightEncoderTarget>
+    <RightMotorRpm>0</RightMotorRpm>
+    <TargetStopState>Brake</TargetStopState>
+  </RuntimeStatistics>
+
+</DriveState>

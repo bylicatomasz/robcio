@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!--This file was created with the Microsoft Visual Programming Language.-->
+<Manifest xmlns:simulatedbumper="http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedbumper.html" xmlns:simulationengine="http://schemas.microsoft.com/robotics/2006/04/simulationengine.html" xmlns:robciodss="http://robcio.dss.bylica.com/2013/11/robciodss.html" xmlns:simulateddifferentialdrive="http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulateddifferentialdrive.html" xmlns:simulatedcompass="http://schemas.microsoft.com/2008/11/simulatedcompass.html" xmlns:joystickform="http://schemas.microsoft.com/robotics/2007/08/joystickform.html" xmlns:ultrasonicsensor="http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/ultrasonicsensor.html" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns:motor="http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/motor.html" xmlns:this="urn:uuid:84b4981e-93f0-40fb-adf4-a5bd357d50d2" xmlns:simulation="http://schemas.microsoft.com/robotics/2006/04/simulation.html" xmlns:lightsensor="http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/lightsensor.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+  <CreateServiceList>
+    <ServiceRecordType>
+      <dssp:Contract>http://robcio.dss.bylica.com/2013/11/robciodss.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/drive.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robciodss:Drive</dssp:Name>
+          <dssp:ServiceName>this:Drive</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/05/motor.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robciodss:Claw</dssp:Name>
+          <dssp:ServiceName>this:Claw</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robciodss:Light</dssp:Name>
+          <dssp:ServiceName>this:Light</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robciodss:Sonar</dssp:Name>
+          <dssp:ServiceName>this:Sonar</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/2006/06/contactsensor.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robciodss:Bumper</dssp:Name>
+          <dssp:ServiceName>this:Bumper</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robciodss:Compass</dssp:Name>
+          <dssp:ServiceName>this:CompassTmp</dssp:ServiceName>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:robciodss</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulateddifferentialdrive.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Drive</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/motor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Claw</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/ultrasonicsensor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT-Sonar</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Sonar</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/lightsensor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT-LightSensor</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Light</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedbumper.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT-Bumper</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:Bumper</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/04/simulationengine.html</dssp:Contract>
+          <dssp:Service>simulationengine.config.xml</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>dssp:StateService</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:SimulationEngine</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/2008/11/simulatedcompass.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT-Compass</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:CompassTmp</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/08/joystickform.html</dssp:Contract>
+      <dssp:PartnerList />
+      <Name>this:DesktopJoystick</Name>
+    </ServiceRecordType>
+  </CreateServiceList>
+</Manifest>

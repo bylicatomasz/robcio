@@ -1,0 +1,7 @@
+C:\Users\a508400\Microsoft Robotics Dev Studio 2008 R3\bin\RobcioDSS.Y2013.M11.dll
+C:\Users\a508400\Microsoft Robotics Dev Studio 2008 R3\bin\RobcioDSS.Y2013.M11.pdb
+C:\Users\a508400\Microsoft Robotics Dev Studio 2008 R3\RobcioDSS\RobcioDSS\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\a508400\Microsoft Robotics Dev Studio 2008 R3\RobcioDSS\RobcioDSS\obj\Debug\RobcioDSS.Y2013.M11.dll
+C:\Users\a508400\Microsoft Robotics Dev Studio 2008 R3\RobcioDSS\RobcioDSS\obj\Debug\RobcioDSS.Y2013.M11.pdb
+C:\Users\a508400\Microsoft Robotics Dev Studio 2008 R3\RobcioDSS\RobcioDSS\obj\Debug\RobcioDSS.BasicFormTest.resources
+C:\Users\a508400\Microsoft Robotics Dev Studio 2008 R3\RobcioDSS\RobcioDSS\obj\Debug\RobcioDSS.csproj.GenerateResource.Cache

@@ -1,0 +1,271 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using Microsoft.Ccr.Core;
+using Microsoft.Ccr.Adapters.WinForms;
+using Microsoft.Dss.Core.Attributes;
+using Microsoft.Dss.ServiceModel.Dssp;
+using Microsoft.Dss.ServiceModel.DsspServiceBase;
+using W3C.Soap;
+using submgr = Microsoft.Dss.Services.SubscriptionManager;
+
+using drive = Microsoft.Robotics.Services.Drive.Proxy;
+using motor = Microsoft.Robotics.Services.Motor.Proxy;
+using analog = Microsoft.Robotics.Services.AnalogSensor.Proxy;
+using contact = Microsoft.Robotics.Services.ContactSensor.Proxy;
+using RobcioDSS.Action;
+using Microsoft.Dss.Core;
+
+namespace RobcioDSS
+{
+
+    partial class RobcioDSSService : DsspServiceBase
+    {
+
+
+
+        #region Robcio_VaribleTaskQuota
+
+        private Port<ActionToExecute> portTaskRobcio = new Port<ActionToExecute>();
+
+
+        private Dispatcher dispatcherPort;
+
+        private DispatcherQueue taskQueue;
+
+        private List<ITask> list = new List<ITask>();
+
+        #endregion
+
+
+        #region Robcio_MindInitialize
+
+        /// <summary>
+        /// Gets initial MindRobcio informations
+        /// </summary>
+        private IEnumerator<ITask> InitializeMindRobcio()
+        {
+
+            yield return Arbiter.FromIteratorHandler(InitializePortTask);
+
+            yield return Arbiter.FromIteratorHandler(CreateForm);
+            yield break;
+        }
+
+        private IEnumerator<ITask> InitializePortTask()
+        {
+
+            dispatcherPort = new Dispatcher(
+                  0, // zero means use one thread per CPU, or 2 if only one CPU present
+                  "sample dispatcher" // friendly name assgined to OS threads
+                  );
+
+            taskQueue = new DispatcherQueue(
+                   "sample queue", // friendly name
+                   dispatcherPort // dispatcher instance
+               );
+
+            Arbiter.Activate(taskQueue,
+
+                   Arbiter.Interleave(
+                       new TeardownReceiverGroup(),
+                       new ExclusiveReceiverGroup
+                       (
+
+                     Arbiter.ReceiveWithIterator(true, portTaskRobcio, ExecuteAction)
+    
+
+                       ),
+                       new ConcurrentReceiverGroup()));
+
+
+
+
+            yield break;
+        }
+
+        private IEnumerator<ITask> CreateForm()
+        {
+        
+
+
+            WinFormsServicePort.Post(new RunForm(StartForm));
+
+
+
+            yield break;
+
+        }
+        private System.Windows.Forms.Form StartForm()
+        {
+            BasicFormTest form = new BasicFormTest(portTaskRobcio);
+            return form;
+        }
+
+        #endregion
+
+        #region Robcio_MainMethod
+
+
+        #region Robcio_OtherMethod
+
+
+
+        private IEnumerator<ITask> RunFirstTask()
+        {
+         
+            /*
+            ActionToExecute actionOpenClaw = new ActionToExecute();
+            actionOpenClaw.State = LogicalState.OpenClaw;
+            portTaskRobcio.Post(actionOpenClaw);
+
+            ActionToExecute actionClosenClaw = new ActionToExecute();
+            actionClosenClaw.State = LogicalState.CloseClaw;
+            portTaskRobcio.Post(actionClosenClaw);
+            */
+            yield break;
+
+        }
+    
+        public void WriteInt(int i)
+        {
+            //Console.WriteLine(taskQueue.Count);
+            //LogInfo("Int is: " + i);
+            LogInfo(LogGroups.Console, "Int is: " + i);
+        }
+        public IEnumerator<ITask> ExecuteAction(ActionToExecute action) {
+
+            if (action.State.Equals(LogicalState.OpenClaw))
+            {
+                LogInfo(LogGroups.Console, "Int is: Open");
+                 return OpenClaw();
+                
+            }
+            else if (action.State.Equals(LogicalState.CloseClaw))
+            {
+                LogInfo(LogGroups.Console, "Int is: Close" );
+                 return CloseClaw();
+            }
+
+
+            return null;
+            
+            
+            
+        }
+        /*
+        private void ExecuteAction(ActionToExecute action) {
+
+            LogInfo(LogGroups.Console, "ActionToExecute: " + action.State.ToString());
+            LogInfo(LogGroups.Console, "Quote Task: " + taskQueue.Count);
+            _state.State = action.State;
+
+            if(action.State.Equals(LogicalState.OpenClaw)){
+                OpenClaw();
+            }else{
+                CloseClaw();
+            }
+            
+
+         //   OnRobcioStateChange();   
+        }
+
+        private void OnRobcioStateChange()
+        {
+            if (MainPortInterleave.ArbiterState != Microsoft.Ccr.Core.Arbiters.ArbiterTaskState.Done)
+            {
+                Port<EmptyValue> port = new Port<EmptyValue>();
+
+                MainPortInterleave.CombineWith(
+                    Arbiter.Interleave(
+                        new TeardownReceiverGroup(),
+                        new ExclusiveReceiverGroup(Arbiter.ReceiveWithIterator<EmptyValue>(false, port, StateChange)),
+                        new ConcurrentReceiverGroup()));
+
+                port.Post(EmptyValue.SharedInstance);
+            }
+        }
+        */
+         
+        #endregion
+
+
+        #region Robcio_MainStateMethod
+
+        /// <summary>
+        /// This function is called on each state change
+        /// </summary>
+        private IEnumerator<ITask> StateChange(EmptyValue value)
+        {
+            // Common
+            /*
+            if (_state.TouchState.Pressed && !_bumped && _state.State != LogicalState.FinalStop)
+            {
+                _bumped = true;
+                yield return Arbiter.FromIteratorHandler(Halt);
+                yield return Arbiter.FromIteratorHandler(CloseClaw);
+                _state.State = LogicalState.Launch;
+            }*/
+
+            // State specific
+            switch (_state.State)
+            {
+                case LogicalState.OpenClaw:
+                    // Opens the claw
+                    yield return Arbiter.FromIteratorHandler(OpenClaw);
+                    break;
+                case LogicalState.CloseClaw:
+                    // Opens the claw
+                    yield return Arbiter.FromIteratorHandler(CloseClaw);
+                    break;
+                case LogicalState.Start:
+                    // Opens the claw
+                  //  yield return Arbiter.FromIteratorHandler(OpenClaw);
+                    // Changing state
+                   // _state.State = LogicalState.Forward;
+                    break;
+                case LogicalState.Forward:
+
+                    // Otherwise, we continue to drive forward
+                    yield return Arbiter.FromIteratorHandler(Forward);
+                    break;
+                case LogicalState.Seek:
+
+                    DateTime dt = DateTime.Now;
+
+                    if (_seekDirection)
+                    {
+                        yield return Arbiter.FromIteratorHandler(Right);
+                    }
+                    else
+                    {
+                        yield return Arbiter.FromIteratorHandler(Left);
+                    }
+
+                    break;
+                case LogicalState.Launch:
+                    // We launch the ball and stop
+                    yield return Arbiter.FromIteratorHandler(FastForward);
+                    yield return Arbiter.FromIteratorHandler(OpenClaw);
+                    yield return Arbiter.FromIteratorHandler(Halt);
+                    _state.State = LogicalState.FinalStop;
+                    break;
+                case LogicalState.FinalStop:
+                    break;
+            }
+
+            yield break;
+        }
+
+
+        #endregion
+
+        #endregion
+
+
+
+
+    }
+}
+
+
