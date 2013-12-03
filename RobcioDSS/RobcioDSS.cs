@@ -80,7 +80,7 @@ namespace RobcioDSS
       
 
         private DateTime _seekLastTime = DateTime.MinValue;
-        private bool _seekDirection = BaseSeekDirection;
+   
 
 
         #endregion

@@ -13,14 +13,14 @@ namespace RobcioDSS
 {
     public partial class BasicFormTest : Form
     {
-        private Port<ActionToExecute> portTaskRobcio;
-        private Port<ActionToExecute> portTaskRobcioHighPriority;
+        PortSet<ActionTask, ActionTaskHighPriority, ActionTaskUpdateStatus> portSetTaskRobcio;
 
-        public BasicFormTest(Port<ActionToExecute> _portTaskRobcio, Port<ActionToExecute> _portTaskRobcioHighPriority)
+
+        public BasicFormTest(PortSet<ActionTask, ActionTaskHighPriority, ActionTaskUpdateStatus> _portSetTaskRobcio)
         {
-   
-            this.portTaskRobcio = _portTaskRobcio;
-            this.portTaskRobcioHighPriority = _portTaskRobcioHighPriority;
+
+            this.portSetTaskRobcio = _portSetTaskRobcio;
+
             InitializeComponent();
         }
 
@@ -31,28 +31,28 @@ namespace RobcioDSS
 
         private void ClawOpenButton_Click(object sender, EventArgs e)
         {
-            ActionToExecute actionOpenClaw = new ActionToExecute();
+            ActionTask actionOpenClaw = new ActionTask();
             actionOpenClaw.State = LogicalState.OpenClaw;
-            portTaskRobcio.Post(actionOpenClaw);
+            portSetTaskRobcio.Post(actionOpenClaw);
         }
 
         private void ClawCloseButton_Click(object sender, EventArgs e)
         {
-            ActionToExecute actionCloseClaw = new ActionToExecute();
+            ActionTask actionCloseClaw = new ActionTask();
             actionCloseClaw.State = LogicalState.CloseClaw;
-            portTaskRobcio.Post(actionCloseClaw);
+            portSetTaskRobcio.Post(actionCloseClaw);
         }
 
         private void ClawBrawoButton_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 5; i++)
             {
-                ActionToExecute actionOpenClaw = new ActionToExecute();
+                ActionTask actionOpenClaw = new ActionTask();
                 actionOpenClaw.State = LogicalState.OpenClaw;
-                portTaskRobcio.Post(actionOpenClaw);
-                ActionToExecute actionCloseClaw = new ActionToExecute();
+                portSetTaskRobcio.Post(actionOpenClaw);
+                ActionTask actionCloseClaw = new ActionTask();
                 actionCloseClaw.State = LogicalState.CloseClaw;
-                portTaskRobcio.Post(actionCloseClaw);
+                portSetTaskRobcio.Post(actionCloseClaw);
                 
 
             }
@@ -61,10 +61,10 @@ namespace RobcioDSS
 
         private void ClearTaskButton_Click(object sender, EventArgs e)
         {
-            
-            ActionToExecute actionClear = new ActionToExecute();
+
+            ActionTaskHighPriority actionClear = new ActionTaskHighPriority();
             actionClear.State = LogicalState.ClearAllTask;
-            portTaskRobcioHighPriority.Post(actionClear);
+            portSetTaskRobcio.Post(actionClear);
 
         }
     }

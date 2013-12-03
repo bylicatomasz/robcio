@@ -104,7 +104,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\ActionToExecute.cs" />
+    <Compile Include="Action\ActionTask.cs" />
+    <Compile Include="Action\ActionTaskHighPriority.cs" />
+    <Compile Include="Action\ActionUpdateStatus.cs" />
     <Compile Include="BasicFormTest.cs">
       <SubType>Form</SubType>
     </Compile>

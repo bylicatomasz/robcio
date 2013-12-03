@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RobcioDSS.Action
 {
-    public class ActionToExecute
+    public class ActionTaskUpdateStatus
     {
         private LogicalState state;
 

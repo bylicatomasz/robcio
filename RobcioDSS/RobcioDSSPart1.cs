@@ -26,10 +26,11 @@ namespace RobcioDSS
 
         #region Robcio_VaribleTaskQuota
 
-        public List<ActionToExecute> actionToDo = new List<ActionToExecute>();
-        private Port<ActionToExecute> portTaskRobcio = new Port<ActionToExecute>();
-        private Port<ActionToExecute> portTaskRobcioHighPriority = new Port<ActionToExecute>();
-        
+        public List<ActionTask> actionToDo = new List<ActionTask>();
+
+
+        private PortSet<ActionTask, ActionTaskHighPriority, ActionTaskUpdateStatus> portSetTaskRobcio = new PortSet<ActionTask, ActionTaskHighPriority, ActionTaskUpdateStatus>();
+
         public Dispatcher dispatcherPort;
 
         public DispatcherQueue taskQueue;
@@ -65,20 +66,22 @@ namespace RobcioDSS
                    "RobcioQueue", // friendly name
                    dispatcherPort // dispatcher instance
                );
-            
-            
+
+
             Arbiter.Activate(taskQueue,
-                
+
 
                    Arbiter.Interleave(
                        new TeardownReceiverGroup(
-                            Arbiter.ReceiveWithIterator(false, portTaskRobcioHighPriority, ExecuteActionHighPriority)
+                            Arbiter.ReceiveWithIteratorFromPortSet<ActionTaskHighPriority>(false, portSetTaskRobcio, ExecuteActionHighPriority)
                            ),
                        new ExclusiveReceiverGroup
                        (
-                        Arbiter.ReceiveWithIterator(true, portTaskRobcio, ExecuteAction)    
+                        Arbiter.ReceiveWithIteratorFromPortSet<ActionTask>(true, portSetTaskRobcio, ExecuteAction)
                        ),
-                       new ConcurrentReceiverGroup()));
+                       new ConcurrentReceiverGroup(
+                        Arbiter.ReceiveWithIteratorFromPortSet<ActionTaskUpdateStatus>(true, portSetTaskRobcio, ExecuteActionUpdateStatus)
+                           )));
 
 
 
@@ -94,7 +97,7 @@ namespace RobcioDSS
         }
         private System.Windows.Forms.Form StartForm()
         {
-            BasicFormTest form = new BasicFormTest(portTaskRobcio, portTaskRobcioHighPriority);
+            BasicFormTest form = new BasicFormTest(portSetTaskRobcio);
             return form;
         }
 
@@ -103,63 +106,49 @@ namespace RobcioDSS
         #region Robcio_MainMethod
 
 
-        #region Robcio_OtherMethod
+        #region Robcio_ExecuteActio
 
 
 
-        private IEnumerator<ITask> RunFirstTask()
+        public IEnumerator<ITask> ExecuteActionHighPriority(ActionTaskHighPriority action)
         {
-         
-            /*
-            ActionToExecute actionOpenClaw = new ActionToExecute();
-            actionOpenClaw.State = LogicalState.OpenClaw;
-            portTaskRobcio.Post(actionOpenClaw);
 
-            ActionToExecute actionClosenClaw = new ActionToExecute();
-            actionClosenClaw.State = LogicalState.CloseClaw;
-            portTaskRobcio.Post(actionClosenClaw);
-            */
-            yield break;
-
-        }
-    
-        public void WriteInt(int i)
-        {
-            //Console.WriteLine(taskQueue.Count);
-            //LogInfo("Int is: " + i);
-            LogInfo(LogGroups.Console, "Int is: " + i);
-        }
-        public IEnumerator<ITask> ExecuteActionHighPriority(ActionToExecute action)
-        {
-       
             if (action.State.Equals(LogicalState.ClearAllTask))
             {
-                   portTaskRobcio.Clear();
-                   taskQueue.Suspend();
-                   taskQueue.Dispose();
-                   return InitializePortTask();
+
+                portSetTaskRobcio.P0.Clear();
+                portSetTaskRobcio.P2.Clear();
+
+                taskQueue.Suspend();
+                taskQueue.Dispose();
+                return InitializePortTask();
             }
             return null;
 
         }
-        public IEnumerator<ITask> ExecuteAction(ActionToExecute action) {
+        public IEnumerator<ITask> ExecuteAction(ActionTask action)
+        {
 
             if (action.State.Equals(LogicalState.OpenClaw))
             {
                 LogInfo(LogGroups.Console, "Int is: Open");
-                 return OpenClaw();
-                
+                return OpenClaw();
+
             }
             else if (action.State.Equals(LogicalState.CloseClaw))
             {
-                LogInfo(LogGroups.Console, "Int is: Close" );
-                 return CloseClaw();
+                LogInfo(LogGroups.Console, "Int is: Close");
+                return CloseClaw();
             }
             return null;
 
         }
+        public IEnumerator<ITask> ExecuteActionUpdateStatus(ActionTaskUpdateStatus action)
+        {
+            return StateChange(action.State);
+        }
 
-         
+
         #endregion
 
 
@@ -168,64 +157,11 @@ namespace RobcioDSS
         /// <summary>
         /// This function is called on each state change
         /// </summary>
-        private IEnumerator<ITask> StateChange(EmptyValue value)
+        private IEnumerator<ITask> StateChange(LogicalState newState)
         {
-            // Common
-            /*
-            if (_state.TouchState.Pressed && !_bumped && _state.State != LogicalState.FinalStop)
-            {
-                _bumped = true;
-                yield return Arbiter.FromIteratorHandler(Halt);
-                yield return Arbiter.FromIteratorHandler(CloseClaw);
-                _state.State = LogicalState.Launch;
-            }*/
 
-            // State specific
-            switch (_state.State)
-            {
-                case LogicalState.OpenClaw:
-                    // Opens the claw
-                    yield return Arbiter.FromIteratorHandler(OpenClaw);
-                    break;
-                case LogicalState.CloseClaw:
-                    // Opens the claw
-                    yield return Arbiter.FromIteratorHandler(CloseClaw);
-                    break;
-                case LogicalState.Start:
-                    // Opens the claw
-                  //  yield return Arbiter.FromIteratorHandler(OpenClaw);
-                    // Changing state
-                   // _state.State = LogicalState.Forward;
-                    break;
-                case LogicalState.Forward:
+            _state.State = newState;
 
-                    // Otherwise, we continue to drive forward
-                    yield return Arbiter.FromIteratorHandler(Forward);
-                    break;
-                case LogicalState.Seek:
-
-                    DateTime dt = DateTime.Now;
-
-                    if (_seekDirection)
-                    {
-                        yield return Arbiter.FromIteratorHandler(Right);
-                    }
-                    else
-                    {
-                        yield return Arbiter.FromIteratorHandler(Left);
-                    }
-
-                    break;
-                case LogicalState.Launch:
-                    // We launch the ball and stop
-                    yield return Arbiter.FromIteratorHandler(FastForward);
-                    yield return Arbiter.FromIteratorHandler(OpenClaw);
-                    yield return Arbiter.FromIteratorHandler(Halt);
-                    _state.State = LogicalState.FinalStop;
-                    break;
-                case LogicalState.FinalStop:
-                    break;
-            }
 
             yield break;
         }
