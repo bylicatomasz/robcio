@@ -35,33 +35,41 @@ namespace Dss.Transforms.TransformRobcioDSS {
             global::RobcioDSS.Proxy.RobcioDSSState from = ((global::RobcioDSS.Proxy.RobcioDSSState)(transformFrom));
             target.State = ((global::RobcioDSS.LogicalState)(((int)(from.State))));
             if ((from.SonarState != null)) {
-                global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
+                global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState tmp = new global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState();
                 ((Microsoft.Dss.Core.IDssSerializable)(from.SonarState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp)));
                 target.SonarState = tmp;
             }
             else {
                 target.SonarState = null;
             }
-            if ((from.LightState != null)) {
+            if ((from.SonarUltrasonicState != null)) {
                 global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp0 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
-                ((Microsoft.Dss.Core.IDssSerializable)(from.LightState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp0)));
-                target.LightState = tmp0;
+                ((Microsoft.Dss.Core.IDssSerializable)(from.SonarUltrasonicState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp0)));
+                target.SonarUltrasonicState = tmp0;
+            }
+            else {
+                target.SonarUltrasonicState = null;
+            }
+            if ((from.LightState != null)) {
+                global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp1 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
+                ((Microsoft.Dss.Core.IDssSerializable)(from.LightState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp1)));
+                target.LightState = tmp1;
             }
             else {
                 target.LightState = null;
             }
             if ((from.CompassState != null)) {
-                global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp1 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
-                ((Microsoft.Dss.Core.IDssSerializable)(from.CompassState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp1)));
-                target.CompassState = tmp1;
+                global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp2 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
+                ((Microsoft.Dss.Core.IDssSerializable)(from.CompassState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp2)));
+                target.CompassState = tmp2;
             }
             else {
                 target.CompassState = null;
             }
             if ((from.TouchState != null)) {
-                global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor tmp2 = new global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor();
-                ((Microsoft.Dss.Core.IDssSerializable)(from.TouchState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp2)));
-                target.TouchState = tmp2;
+                global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor tmp3 = new global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor();
+                ((Microsoft.Dss.Core.IDssSerializable)(from.TouchState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp3)));
+                target.TouchState = tmp3;
             }
             else {
                 target.TouchState = null;
@@ -73,29 +81,35 @@ namespace Dss.Transforms.TransformRobcioDSS {
             global::RobcioDSS.Proxy.RobcioDSSState target = new global::RobcioDSS.Proxy.RobcioDSSState();
             global::RobcioDSS.RobcioDSSState from = ((global::RobcioDSS.RobcioDSSState)(transformFrom));
             target.State = ((global::RobcioDSS.Proxy.LogicalState)(((int)(from.State))));
-            global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp = from.SonarState;
+            global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState tmp = from.SonarState;
             if ((tmp != null)) {
-                global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp0 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
+                global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState tmp0 = new global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState();
                 ((Microsoft.Dss.Core.IDssSerializable)(tmp)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp0)));
                 target.SonarState = tmp0;
             }
-            global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp1 = from.LightState;
+            global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp1 = from.SonarUltrasonicState;
             if ((tmp1 != null)) {
                 global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp2 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
                 ((Microsoft.Dss.Core.IDssSerializable)(tmp1)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp2)));
-                target.LightState = tmp2;
+                target.SonarUltrasonicState = tmp2;
             }
-            global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp3 = from.CompassState;
+            global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp3 = from.LightState;
             if ((tmp3 != null)) {
                 global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp4 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
                 ((Microsoft.Dss.Core.IDssSerializable)(tmp3)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp4)));
-                target.CompassState = tmp4;
+                target.LightState = tmp4;
             }
-            global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor tmp5 = from.TouchState;
+            global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp5 = from.CompassState;
             if ((tmp5 != null)) {
-                global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor tmp6 = new global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor();
+                global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp6 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
                 ((Microsoft.Dss.Core.IDssSerializable)(tmp5)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp6)));
-                target.TouchState = tmp6;
+                target.CompassState = tmp6;
+            }
+            global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor tmp7 = from.TouchState;
+            if ((tmp7 != null)) {
+                global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor tmp8 = new global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor();
+                ((Microsoft.Dss.Core.IDssSerializable)(tmp7)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp8)));
+                target.TouchState = tmp8;
             }
             return target;
         }

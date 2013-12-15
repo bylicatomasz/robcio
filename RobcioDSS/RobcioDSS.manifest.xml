@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--This file was created with the Microsoft Visual Programming Language.-->
-<Manifest xmlns:simulatedbumper="http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedbumper.html" xmlns:simulationengine="http://schemas.microsoft.com/robotics/2006/04/simulationengine.html" xmlns:robciodss="http://robcio.dss.bylica.com/2013/11/robciodss.html" xmlns:simulateddifferentialdrive="http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulateddifferentialdrive.html" xmlns:simulatedcompass="http://schemas.microsoft.com/2008/11/simulatedcompass.html" xmlns:joystickform="http://schemas.microsoft.com/robotics/2007/08/joystickform.html" xmlns:ultrasonicsensor="http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/ultrasonicsensor.html" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns:motor="http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/motor.html" xmlns:this="urn:uuid:84b4981e-93f0-40fb-adf4-a5bd357d50d2" xmlns:simulation="http://schemas.microsoft.com/robotics/2006/04/simulation.html" xmlns:lightsensor="http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/lightsensor.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
+<Manifest xmlns:simulationengine="http://schemas.microsoft.com/robotics/2006/04/simulationengine.html" xmlns:robciodss="http://robcio.dss.bylica.com/2013/11/robciodss.html" xmlns:ultrasonicsensor="http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/ultrasonicsensor.html" xmlns:simulateddifferentialdrive="http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulateddifferentialdrive.html" xmlns:simulatedcompass="http://schemas.microsoft.com/2008/11/simulatedcompass.html" xmlns:joystickform="http://schemas.microsoft.com/robotics/2007/08/joystickform.html" xmlns:simulatedbumper="http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedbumper.html" xmlns:dssp="http://schemas.microsoft.com/xw/2004/10/dssp.html" xmlns:motor="http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/motor.html" xmlns:this="urn:uuid:272442f3-3ba1-4018-8f96-0b5e16a00ca4" xmlns:simulatedsonar="http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedsonar.html" xmlns:simulation="http://schemas.microsoft.com/robotics/2006/04/simulation.html" xmlns:lightsensor="http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/lightsensor.html" xmlns="http://schemas.microsoft.com/xw/2004/10/manifest.html">
   <CreateServiceList>
     <ServiceRecordType>
       <dssp:Contract>http://robcio.dss.bylica.com/2013/11/robciodss.html</dssp:Contract>
@@ -24,10 +24,10 @@
           <dssp:ServiceName>this:Light</dssp:ServiceName>
         </dssp:Partner>
         <dssp:Partner>
-          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</dssp:Contract>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/sonar.html</dssp:Contract>
           <dssp:PartnerList />
           <dssp:Name>robciodss:Sonar</dssp:Name>
-          <dssp:ServiceName>this:Sonar</dssp:ServiceName>
+          <dssp:ServiceName>this:SimulatedSonar</dssp:ServiceName>
         </dssp:Partner>
         <dssp:Partner>
           <dssp:Contract>http://schemas.microsoft.com/2006/06/contactsensor.html</dssp:Contract>
@@ -40,6 +40,12 @@
           <dssp:PartnerList />
           <dssp:Name>robciodss:Compass</dssp:Name>
           <dssp:ServiceName>this:CompassTmp</dssp:ServiceName>
+        </dssp:Partner>
+        <dssp:Partner>
+          <dssp:Contract>http://schemas.microsoft.com/robotics/2006/06/analogsensor.html</dssp:Contract>
+          <dssp:PartnerList />
+          <dssp:Name>robciodss:SonarUltrasonic</dssp:Name>
+          <dssp:ServiceName>this:SimulatedUltrasonic</dssp:ServiceName>
         </dssp:Partner>
       </dssp:PartnerList>
       <Name>this:robciodss</Name>
@@ -65,17 +71,6 @@
         </dssp:Partner>
       </dssp:PartnerList>
       <Name>this:Claw</Name>
-    </ServiceRecordType>
-    <ServiceRecordType>
-      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/ultrasonicsensor.html</dssp:Contract>
-      <dssp:PartnerList>
-        <dssp:Partner>
-          <dssp:Service>http://localhost/LegoNXT-Sonar</dssp:Service>
-          <dssp:PartnerList />
-          <dssp:Name>simulation:Entity</dssp:Name>
-        </dssp:Partner>
-      </dssp:PartnerList>
-      <Name>this:Sonar</Name>
     </ServiceRecordType>
     <ServiceRecordType>
       <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/lightsensor.html</dssp:Contract>
@@ -123,9 +118,26 @@
       <Name>this:CompassTmp</Name>
     </ServiceRecordType>
     <ServiceRecordType>
-      <dssp:Contract>http://schemas.microsoft.com/robotics/2007/08/joystickform.html</dssp:Contract>
-      <dssp:PartnerList />
-      <Name>this:DesktopJoystick</Name>
+      <dssp:Contract>http://schemas.microsoft.com/robotics/simulation/services/2006/05/simulatedsonar.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT-AdvanceSonar</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:SimulatedSonar</Name>
+    </ServiceRecordType>
+    <ServiceRecordType>
+      <dssp:Contract>http://www.simplysim.net/2010/09/robotics/nxt/services/simulation/ultrasonicsensor.html</dssp:Contract>
+      <dssp:PartnerList>
+        <dssp:Partner>
+          <dssp:Service>http://localhost/LegoNXT-Sonar</dssp:Service>
+          <dssp:PartnerList />
+          <dssp:Name>simulation:Entity</dssp:Name>
+        </dssp:Partner>
+      </dssp:PartnerList>
+      <Name>this:SimulatedUltrasonic</Name>
     </ServiceRecordType>
   </CreateServiceList>
 </Manifest>

@@ -38,15 +38,27 @@ namespace RobcioDSS.Proxy {
             }
         }
         
-        private global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState _SonarState;
+        private global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState _SonarState;
         
         [global::Microsoft.Dss.Core.Attributes.DataMemberAttribute(Order=-1)]
-        public global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState SonarState {
+        public global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState SonarState {
             get {
                 return this._SonarState;
             }
             set {
                 this._SonarState = value;
+            }
+        }
+        
+        private global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState _SonarUltrasonicState;
+        
+        [global::Microsoft.Dss.Core.Attributes.DataMemberAttribute(Order=-1)]
+        public global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState SonarUltrasonicState {
+            get {
+                return this._SonarUltrasonicState;
+            }
+            set {
+                this._SonarUltrasonicState = value;
             }
         }
         
@@ -94,24 +106,29 @@ namespace RobcioDSS.Proxy {
             global::RobcioDSS.Proxy.RobcioDSSState typedTarget = ((global::RobcioDSS.Proxy.RobcioDSSState)(target));
             typedTarget._State = this._State;
             if ((this._SonarState != null)) {
-                global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
+                global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState tmp = new global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState();
                 ((Microsoft.Dss.Core.IDssSerializable)(this._SonarState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp)));
                 typedTarget._SonarState = tmp;
             }
-            if ((this._LightState != null)) {
+            if ((this._SonarUltrasonicState != null)) {
                 global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp0 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
-                ((Microsoft.Dss.Core.IDssSerializable)(this._LightState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp0)));
-                typedTarget._LightState = tmp0;
+                ((Microsoft.Dss.Core.IDssSerializable)(this._SonarUltrasonicState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp0)));
+                typedTarget._SonarUltrasonicState = tmp0;
+            }
+            if ((this._LightState != null)) {
+                global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp1 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
+                ((Microsoft.Dss.Core.IDssSerializable)(this._LightState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp1)));
+                typedTarget._LightState = tmp1;
             }
             if ((this._CompassState != null)) {
-                global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp1 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
-                ((Microsoft.Dss.Core.IDssSerializable)(this._CompassState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp1)));
-                typedTarget._CompassState = tmp1;
+                global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState tmp2 = new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState();
+                ((Microsoft.Dss.Core.IDssSerializable)(this._CompassState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp2)));
+                typedTarget._CompassState = tmp2;
             }
             if ((this._TouchState != null)) {
-                global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor tmp2 = new global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor();
-                ((Microsoft.Dss.Core.IDssSerializable)(this._TouchState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp2)));
-                typedTarget._TouchState = tmp2;
+                global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor tmp3 = new global::Microsoft.Robotics.Services.ContactSensor.Proxy.ContactSensor();
+                ((Microsoft.Dss.Core.IDssSerializable)(this._TouchState)).CopyTo(((Microsoft.Dss.Core.IDssSerializable)(tmp3)));
+                typedTarget._TouchState = tmp3;
             }
         }
         
@@ -137,6 +154,13 @@ namespace RobcioDSS.Proxy {
             else {
                 writer.Write(((byte)(1)));
                 ((Microsoft.Dss.Core.IDssSerializable)(this._SonarState)).Serialize(writer);
+            }
+            if ((this._SonarUltrasonicState == null)) {
+                writer.Write(((byte)(0)));
+            }
+            else {
+                writer.Write(((byte)(1)));
+                ((Microsoft.Dss.Core.IDssSerializable)(this._SonarUltrasonicState)).Serialize(writer);
             }
             if ((this._LightState == null)) {
                 writer.Write(((byte)(0)));
@@ -169,7 +193,10 @@ namespace RobcioDSS.Proxy {
         public virtual object Deserialize(System.IO.BinaryReader reader) {
             this._State = ((global::RobcioDSS.Proxy.LogicalState)(reader.ReadInt32()));
             if ((reader.ReadByte() != 0)) {
-                this._SonarState = ((global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState)(((Microsoft.Dss.Core.IDssSerializable)(new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState())).Deserialize(reader)));
+                this._SonarState = ((global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState)(((Microsoft.Dss.Core.IDssSerializable)(new global::Microsoft.Robotics.Services.Sonar.Proxy.SonarState())).Deserialize(reader)));
+            }
+            if ((reader.ReadByte() != 0)) {
+                this._SonarUltrasonicState = ((global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState)(((Microsoft.Dss.Core.IDssSerializable)(new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState())).Deserialize(reader)));
             }
             if ((reader.ReadByte() != 0)) {
                 this._LightState = ((global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState)(((Microsoft.Dss.Core.IDssSerializable)(new global::Microsoft.Robotics.Services.AnalogSensor.Proxy.AnalogSensorState())).Deserialize(reader)));
@@ -389,17 +416,23 @@ namespace RobcioDSS.Proxy {
         
         Stop = 3,
         
-        OpenClaw = 4,
+        Left = 4,
         
-        CloseClaw = 5,
+        Right = 5,
         
-        Seek = 6,
+        OpenClaw = 6,
         
-        Launch = 7,
+        CloseClaw = 7,
         
-        ClearAllTask = 8,
+        Seek = 8,
         
-        FinalStop = 9,
+        Launch = 9,
+        
+        ClearAllTask = 10,
+        
+        FinalStop = 11,
+        
+        StateRobotChange = 12,
     }
     
     [global::System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema=false)]

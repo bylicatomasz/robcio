@@ -29,7 +29,7 @@ namespace RobcioDSS
         public List<ActionTask> actionToDo = new List<ActionTask>();
 
 
-        private PortSet<ActionTask, ActionTaskHighPriority, ActionTaskUpdateStatus> portSetTaskRobcio = new PortSet<ActionTask, ActionTaskHighPriority, ActionTaskUpdateStatus>();
+        private PortSet<ActionTask, ActionTaskHighPriority, ActionTaskCheckStatus> portSetTaskRobcio = new PortSet<ActionTask, ActionTaskHighPriority, ActionTaskCheckStatus>();
 
         public Dispatcher dispatcherPort;
 
@@ -53,6 +53,7 @@ namespace RobcioDSS
             yield return Arbiter.FromIteratorHandler(CreateForm);
             yield break;
         }
+
 
         private IEnumerator<ITask> InitializePortTask()
         {
@@ -80,7 +81,7 @@ namespace RobcioDSS
                         Arbiter.ReceiveWithIteratorFromPortSet<ActionTask>(true, portSetTaskRobcio, ExecuteAction)
                        ),
                        new ConcurrentReceiverGroup(
-                        Arbiter.ReceiveWithIteratorFromPortSet<ActionTaskUpdateStatus>(true, portSetTaskRobcio, ExecuteActionUpdateStatus)
+                        Arbiter.ReceiveWithIteratorFromPortSet<ActionTaskCheckStatus>(true, portSetTaskRobcio, ExecuteActionTaskCheckStatus)
                            )));
 
 
@@ -100,6 +101,7 @@ namespace RobcioDSS
             BasicFormTest form = new BasicFormTest(portSetTaskRobcio);
             return form;
         }
+
 
         #endregion
 
@@ -123,12 +125,15 @@ namespace RobcioDSS
                 taskQueue.Dispose();
                 return InitializePortTask();
             }
+
             return null;
 
         }
+
+
         public IEnumerator<ITask> ExecuteAction(ActionTask action)
         {
-
+            PutNewLogicalState(action.State);
             if (action.State.Equals(LogicalState.OpenClaw))
             {
                 LogInfo(LogGroups.Console, "Int is: Open");
@@ -140,12 +145,45 @@ namespace RobcioDSS
                 LogInfo(LogGroups.Console, "Int is: Close");
                 return CloseClaw();
             }
+            else if (action.State.Equals(LogicalState.Forward))
+            {
+                LogInfo(LogGroups.Console, "Int is: Forward");
+                return Forward();
+            }
+            else if (action.State.Equals(LogicalState.Back))
+            {
+                LogInfo(LogGroups.Console, "Int is: Back");
+                return Back();
+            }
+            else if (action.State.Equals(LogicalState.Left))
+            {
+                LogInfo(LogGroups.Console, "Int is: Left");
+                return Left();
+            }
+            else if (action.State.Equals(LogicalState.Right))
+            {
+                LogInfo(LogGroups.Console, "Int is: Right");
+                return Right();
+            }
+            else if (action.State.Equals(LogicalState.Stop))
+            {
+                LogInfo(LogGroups.Console, "Int is: Right");
+                return Halt();
+            }
             return null;
 
         }
-        public IEnumerator<ITask> ExecuteActionUpdateStatus(ActionTaskUpdateStatus action)
+        public IEnumerator<ITask> ExecuteActionTaskCheckStatus(ActionTaskCheckStatus check)
         {
-            return StateChange(action.State);
+            if (_state.State.Equals(LogicalState.Forward) && _state.SonarUltrasonicState.RawMeasurement < 30)
+            {
+                LogInfo(LogGroups.Console, "To close obstruction. We must stop.");
+                ActionTask actionStop = new ActionTask();
+                actionStop.State = LogicalState.Stop;
+                portSetTaskRobcio.Post(actionStop);
+            }
+            yield break;
+
         }
 
 
@@ -154,17 +192,18 @@ namespace RobcioDSS
 
         #region Robcio_MainStateMethod
 
-        /// <summary>
-        /// This function is called on each state change
-        /// </summary>
-        private IEnumerator<ITask> StateChange(LogicalState newState)
+
+        private void PutNewLogicalState(LogicalState state)
         {
-
-            _state.State = newState;
-
-
-            yield break;
+            _state.State = state;
         }
+        private void CheckStateRobocio()
+        {
+            ActionTaskCheckStatus check = new ActionTaskCheckStatus();
+            check.DateCheck = new DateTime();
+            portSetTaskRobcio.Post(check);
+        }
+ 
 
 
         #endregion

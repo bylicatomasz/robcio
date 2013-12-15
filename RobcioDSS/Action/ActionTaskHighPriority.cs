@@ -4,15 +4,16 @@ using System.Text;
 
 namespace RobcioDSS.Action
 {
-    public class ActionTaskUpdateStatus
+    public class ActionTaskCheckStatus
     {
-        private LogicalState state;
+        private DateTime dateCheck;
 
-        public LogicalState State
+        public DateTime DateCheck
         {
-            get { return state; }
-            set { state = value; }
+            get { return dateCheck; }
+            set { dateCheck = value; }
         }
+
 
     }
 }

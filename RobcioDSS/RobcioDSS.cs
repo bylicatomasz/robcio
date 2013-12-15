@@ -11,6 +11,7 @@ using submgr = Microsoft.Dss.Services.SubscriptionManager;
 using drive = Microsoft.Robotics.Services.Drive.Proxy;
 using motor = Microsoft.Robotics.Services.Motor.Proxy;
 using analog = Microsoft.Robotics.Services.AnalogSensor.Proxy;
+using sonar = Microsoft.Robotics.Services.Sonar.Proxy;
 using contact = Microsoft.Robotics.Services.ContactSensor.Proxy;
 using Microsoft.Dss.Core;
 
@@ -110,9 +111,17 @@ namespace RobcioDSS
         /// <summary>
         /// Ultrasonic Sensor partner
         /// </summary>
-        [Partner("Sonar", Contract = analog.Contract.Identifier, CreationPolicy = PartnerCreationPolicy.UsePartnerListEntry)]
-        analog.AnalogSensorOperations _analogSonarPort = new analog.AnalogSensorOperations();
-        analog.AnalogSensorOperations _analogSonarNotify = new analog.AnalogSensorOperations();
+        [Partner("SonarUltrasonic", Contract = analog.Contract.Identifier, CreationPolicy = PartnerCreationPolicy.UsePartnerListEntry)]
+        analog.AnalogSensorOperations _analogSonarUltrasonicPort = new analog.AnalogSensorOperations();
+        analog.AnalogSensorOperations _analogSonarUltrasonicNotify = new analog.AnalogSensorOperations();
+
+        /// <summary>
+        /// Ultrasonic Sensor partner
+        /// </summary>
+        [Partner("Sonar", Contract = sonar.Contract.Identifier, CreationPolicy = PartnerCreationPolicy.UsePartnerListEntry)]
+        sonar.SonarOperations _sonarSonarPort = new sonar.SonarOperations();
+        sonar.SonarOperations _sonarSonarNotify = new sonar.SonarOperations();
+
 
         /// <summary>
         /// Compass partner
@@ -150,6 +159,7 @@ namespace RobcioDSS
             // We span an iterator to initialize the robot
             SpawnIterator(Initialize);
             SpawnIterator(InitializeMindRobcio);
+            
         }
 
      
@@ -163,7 +173,12 @@ namespace RobcioDSS
         {
             // Retreives sonar state
             yield return Arbiter.Choice(
-                _analogSonarPort.Get(),
+                _analogSonarUltrasonicPort.Get(),
+                (success) => _state.SonarUltrasonicState = success,
+                (fault) => LogError(fault));
+            // Retreives sonar state
+            yield return Arbiter.Choice(
+                _sonarSonarPort.Get(),
                 (success) => _state.SonarState = success,
                 (fault) => LogError(fault));
 
@@ -193,21 +208,25 @@ namespace RobcioDSS
                    new ExclusiveReceiverGroup
                    (
                        Arbiter.Receive<analog.Replace>(true, _analogCompassNotify, CompassReplaceHandler),
-                       Arbiter.Receive<analog.Replace>(true, _analogSonarNotify, SonarReplaceHandler),
+                       Arbiter.Receive<analog.Replace>(true, _analogSonarUltrasonicNotify, SonarUltrasonicReplaceHandler),
+                       Arbiter.Receive<sonar.Replace>(true, _sonarSonarNotify, SonarReplaceHandler),
                        Arbiter.Receive<analog.Replace>(true, _analogLightNotify, LightReplaceHandler),
                        Arbiter.Receive<contact.Update>(true, _contactTouchNotify, TouchUpdateHandler)
                    ),
                    new ConcurrentReceiverGroup()));
 
             // Subscribes to sensor notification
+            _sonarSonarPort.Subscribe(_sonarSonarNotify);
             _analogCompassPort.Subscribe(_analogCompassNotify);
-            _analogSonarPort.Subscribe(_analogSonarNotify);
+            _analogSonarUltrasonicPort.Subscribe(_analogSonarUltrasonicNotify);
             _analogLightPort.Subscribe(_analogLightNotify);
             _contactTouchPort.Subscribe(_contactTouchNotify);
 
             // Launch the main loop
             //OnStateChange();
+            
 
+            
 
 
             yield break;
@@ -224,6 +243,14 @@ namespace RobcioDSS
         private IEnumerator<ITask> Forward()
         {
             _drivePort.SetDrivePower(DrivePower, DrivePower);
+            yield break;
+        }
+        /// <summary>
+        /// Robot moves back
+        /// </summary>
+        private IEnumerator<ITask> Back()
+        {
+            _drivePort.SetDrivePower(-DrivePower, -DrivePower);
             yield break;
         }
 
@@ -296,12 +323,27 @@ namespace RobcioDSS
         /// <summary>
         /// Sonar notification handler
         /// </summary>
-        private void SonarReplaceHandler(analog.Replace replace)
+        private void SonarUltrasonicReplaceHandler(analog.Replace replace)
         {
-            if (Math.Abs(replace.Body.RawMeasurement - _state.SonarState.RawMeasurement) > 5)
+            
+            if (Math.Abs(replace.Body.RawMeasurement - _state.SonarUltrasonicState.RawMeasurement) > 5)
+            {
+        
+                _state.SonarUltrasonicState = replace.Body;
+                CheckStateRobocio();       
+     
+            }
+        }
+        /// <summary>
+        /// Sonar notification handler
+        /// </summary>
+        private void SonarReplaceHandler(sonar.Replace replace)
+        {
+            //replace.Body.DistanceMeasurements
+            if (Math.Abs(replace.Body.DistanceMeasurement - _state.SonarState.DistanceMeasurement) > 5)
             {
                 _state.SonarState = replace.Body;
-     
+
             }
         }
 

@@ -8,6 +8,7 @@ using Microsoft.Dss.ServiceModel.DsspServiceBase;
 using W3C.Soap;
 using analog = Microsoft.Robotics.Services.AnalogSensor.Proxy;
 using contact = Microsoft.Robotics.Services.ContactSensor.Proxy;
+using sonar = Microsoft.Robotics.Services.Sonar.Proxy;
 namespace RobcioDSS
 {
     /// <summary>
@@ -30,13 +31,17 @@ namespace RobcioDSS
     {
         private LogicalState _state;
 
-        private analog.AnalogSensorState _sonarState;
+        private analog.AnalogSensorState _sonarUltrasonicState;
 
         private analog.AnalogSensorState _copassState;
 
         private analog.AnalogSensorState _lightState;
 
         private contact.ContactSensor _touchState;
+
+        private sonar.SonarState _sonarState;
+
+
 
         public RobcioDSSState()
         {
@@ -54,13 +59,24 @@ namespace RobcioDSS
         }
 
         /// <summary>
-        /// Last retreived sonar state
+        /// Last retreived Sonar state
         /// </summary>
         [DataMember]
-        public analog.AnalogSensorState SonarState
+        public sonar.SonarState SonarState
         {
             get { return _sonarState; }
             set { _sonarState = value; }
+        }
+
+
+        /// <summary>
+        /// Last retreived SonarUltrasonic state
+        /// </summary>
+        [DataMember]
+        public analog.AnalogSensorState SonarUltrasonicState
+        {
+            get { return _sonarUltrasonicState; }
+            set { _sonarUltrasonicState = value; }
         }
 
         /// <summary>
@@ -116,6 +132,14 @@ namespace RobcioDSS
         /// </summary>
         Stop,
         /// <summary>
+        /// The robot moves Stop
+        /// </summary>
+        Left,
+        /// <summary>
+        /// The robot moves Stop
+        /// </summary>
+        Right,
+        /// <summary>
         /// The robot moves OpenClaw
         /// </summary>
         OpenClaw,
@@ -139,7 +163,11 @@ namespace RobcioDSS
         /// <summary>
         /// The robot stops
         /// </summary>
-        FinalStop
+        FinalStop,
+        /// <summary>
+        /// The StateRobotChange stops
+        /// </summary>
+        StateRobotChange
     }
 
     /// <summary>
