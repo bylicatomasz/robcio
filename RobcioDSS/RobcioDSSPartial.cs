@@ -15,6 +15,8 @@ using analog = Microsoft.Robotics.Services.AnalogSensor.Proxy;
 using contact = Microsoft.Robotics.Services.ContactSensor.Proxy;
 using RobcioDSS.Action;
 using Microsoft.Dss.Core;
+using System.Text;
+using RobcioDSS.Network;
 
 namespace RobcioDSS
 {
@@ -36,6 +38,8 @@ namespace RobcioDSS
         public DispatcherQueue taskQueue;
 
         private List<ITask> list = new List<ITask>();
+
+        private Boolean startRecording = false;
 
         #endregion
 
@@ -133,7 +137,11 @@ namespace RobcioDSS
 
         public IEnumerator<ITask> ExecuteAction(ActionTask action)
         {
-            PutNewLogicalState(action.State);
+            if (!action.State.Equals(LogicalState.StartRecording) || !action.State.Equals(LogicalState.StopRecording))
+            {
+                PutNewLogicalState(action.State);
+            }
+            
             if (action.State.Equals(LogicalState.OpenClaw))
             {
                 LogInfo(LogGroups.Console, "Int is: Open");
@@ -170,12 +178,23 @@ namespace RobcioDSS
                 LogInfo(LogGroups.Console, "Int is: Right");
                 return Halt();
             }
+            else if (action.State.Equals(LogicalState.StopRecording))
+            {
+                LogInfo(LogGroups.Console, "Int is: StopRecord");
+                startRecording = false;                
+            }
+            else if (action.State.Equals(LogicalState.StartRecording))
+            {
+                LogInfo(LogGroups.Console, "Int is: StartRecord");
+                startRecording = true;
+            }
             return null;
 
         }
         public IEnumerator<ITask> ExecuteActionTaskCheckStatus(ActionTaskCheckStatus check)
         {
-            if (_state.State.Equals(LogicalState.Forward) && _state.SonarUltrasonicState.RawMeasurement < 30)
+            addToLogString();
+            if (_state.State.Equals(LogicalState.Forward) && _state.SonarState.DistanceMeasurement < 0.30)
             {
                 LogInfo(LogGroups.Console, "To close obstruction. We must stop.");
                 ActionTask actionStop = new ActionTask();
@@ -186,6 +205,60 @@ namespace RobcioDSS
 
         }
 
+        void addToLogString()
+        {
+
+            if (startRecording==true && _state != null && _state.CompassState != null && _state.CompassState.NormalizedMeasurement !=0.0
+                && _state.SonarState != null && _state.SonarState.DistanceMeasurements != null
+                && _state.SonarUltrasonicState != null && _state.SonarUltrasonicState.RawMeasurement != 0.0
+                )
+            {
+                
+                StringBuilder sb = new StringBuilder();
+
+                Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+
+                Int32 unixTimestampSonar = (Int32)(_state.SonarState.TimeStamp.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                Int32 unixTimestampCompass = (Int32)(_state.CompassState.TimeStamp.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                
+
+                sb.Append(unixTimestamp);
+                sb.Append(";");
+                sb.Append(_state.Dystance);
+                sb.Append(";");
+                sb.Append(_state.CompassState.NormalizedMeasurement);
+                sb.Append(";");
+                sb.Append(_state.SonarUltrasonicState.RawMeasurement);
+                sb.Append(";");
+                sb.Append(_state.State.ToString());
+                sb.Append(";");
+
+                sb.Append(unixTimestampSonar);
+                sb.Append(";");
+                sb.Append(unixTimestampCompass);
+                sb.Append(";");
+
+                sb.Append(_state.CompassState.RawMeasurement);
+                sb.Append(";");
+
+                sb.Append(_state.SonarState.DistanceMeasurement);
+                sb.Append(";");
+
+
+                foreach (double v in _state.SonarState.DistanceMeasurements)
+                {
+
+                    sb.Append(v);
+                    sb.Append(";");
+                }
+
+                new CallWebService().SendData(sb.ToString());
+                System.IO.StreamWriter file = new System.IO.StreamWriter(csvFileName, true);
+                file.WriteLine(sb.ToString());
+                file.Close();
+
+            }      
+        }
 
         #endregion
 
@@ -203,7 +276,7 @@ namespace RobcioDSS
             check.DateCheck = new DateTime();
             portSetTaskRobcio.Post(check);
         }
- 
+
 
 
         #endregion

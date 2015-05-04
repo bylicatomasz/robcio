@@ -38,6 +38,8 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.test = new System.Windows.Forms.Button();
+            this.buttonStartRecording = new System.Windows.Forms.Button();
+            this.buttonStopRecording = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ClawOpenButton
@@ -140,11 +142,33 @@
             this.test.UseVisualStyleBackColor = true;
             this.test.Click += new System.EventHandler(this.test_Click);
             // 
+            // buttonStartRecording
+            // 
+            this.buttonStartRecording.Location = new System.Drawing.Point(13, 71);
+            this.buttonStartRecording.Name = "buttonStartRecording";
+            this.buttonStartRecording.Size = new System.Drawing.Size(75, 23);
+            this.buttonStartRecording.TabIndex = 10;
+            this.buttonStartRecording.Text = "Rec Start";
+            this.buttonStartRecording.UseVisualStyleBackColor = true;
+            this.buttonStartRecording.Click += new System.EventHandler(this.buttonStartRecording_Click);
+            // 
+            // buttonStopRecording
+            // 
+            this.buttonStopRecording.Location = new System.Drawing.Point(93, 70);
+            this.buttonStopRecording.Name = "buttonStopRecording";
+            this.buttonStopRecording.Size = new System.Drawing.Size(75, 23);
+            this.buttonStopRecording.TabIndex = 11;
+            this.buttonStopRecording.Text = "Rec Stop";
+            this.buttonStopRecording.UseVisualStyleBackColor = true;
+            this.buttonStopRecording.Click += new System.EventHandler(this.buttonStopRecording_Click);
+            // 
             // BasicFormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.buttonStopRecording);
+            this.Controls.Add(this.buttonStartRecording);
             this.Controls.Add(this.test);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonBack);
@@ -175,5 +199,7 @@
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Button test;
+        private System.Windows.Forms.Button buttonStartRecording;
+        private System.Windows.Forms.Button buttonStopRecording;
     }
 }

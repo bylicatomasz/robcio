@@ -38,7 +38,8 @@ namespace RobcioDSS
         submgr.SubscriptionManagerPort _submgrPort = new submgr.SubscriptionManagerPort();
 
 
-      
+
+        private String csvFileName;
 
 
         #region Constants
@@ -159,6 +160,8 @@ namespace RobcioDSS
             // We span an iterator to initialize the robot
             SpawnIterator(Initialize);
             SpawnIterator(InitializeMindRobcio);
+
+            csvFileName = "C:\\Temp\\logRecor_" + DateTime.Now.ToString().Replace(":", "_")+"_.csv";
             
         }
 
@@ -215,6 +218,7 @@ namespace RobcioDSS
                    ),
                    new ConcurrentReceiverGroup()));
 
+            
             // Subscribes to sensor notification
             _sonarSonarPort.Subscribe(_sonarSonarNotify);
             _analogCompassPort.Subscribe(_analogCompassNotify);
@@ -277,7 +281,7 @@ namespace RobcioDSS
         /// </summary>
         private IEnumerator<ITask> Left()
         {
-            _drivePort.SetDrivePower(-DrivePower / 4.0d, DrivePower / 4.0d);
+            _drivePort.SetDrivePower(-DrivePower / 6.0d, DrivePower / 6.0d);
             yield break;
         }
 
@@ -286,7 +290,7 @@ namespace RobcioDSS
         /// </summary>
         private IEnumerator<ITask> Right()
         {
-            _drivePort.SetDrivePower(DrivePower / 4.0d, -DrivePower / 4.0d);
+            _drivePort.SetDrivePower(DrivePower / 6.0d, -DrivePower / 6.0d);
             yield break;
         }
 
@@ -326,13 +330,15 @@ namespace RobcioDSS
         private void SonarUltrasonicReplaceHandler(analog.Replace replace)
         {
             
-            if (Math.Abs(replace.Body.RawMeasurement - _state.SonarUltrasonicState.RawMeasurement) > 5)
-            {
+        //    if (Math.Abs(replace.Body.RawMeasurement - _state.SonarUltrasonicState.RawMeasurement) > 0.5)
+        //    {
         
+               
+               
                 _state.SonarUltrasonicState = replace.Body;
-                CheckStateRobocio();       
+                    
      
-            }
+         //   }
         }
         /// <summary>
         /// Sonar notification handler
@@ -340,11 +346,19 @@ namespace RobcioDSS
         private void SonarReplaceHandler(sonar.Replace replace)
         {
             //replace.Body.DistanceMeasurements
-            if (Math.Abs(replace.Body.DistanceMeasurement - _state.SonarState.DistanceMeasurement) > 5)
+            //if (Math.Abs(replace.Body.DistanceMeasurement - _state.SonarState.DistanceMeasurement)*100 > 5)
+            //{
+            //_state.SonarState.AngularRange
+            //_state.SonarState.DistanceMeasurements
+            //_state.Dystance = Math.Abs(replace.Body.DistanceMeasurement - _state.SonarState.DistanceMeasurement);
+            if (replace.Body.DistanceMeasurements != null && _state.SonarState.DistanceMeasurements != null && _state.SonarState.DistanceMeasurements.Length > 120)
             {
-                _state.SonarState = replace.Body;
-
+                _state.Dystance = _state.SonarState.DistanceMeasurements[120] - replace.Body.DistanceMeasurements[120]  ;
             }
+                _state.SonarState = replace.Body;
+                CheckStateRobocio();   
+
+            //}
         }
 
         /// <summary>
@@ -352,11 +366,20 @@ namespace RobcioDSS
         /// </summary>
         private void CompassReplaceHandler(analog.Replace replace)
         {
-            if (Math.Abs(replace.Body.RawMeasurement - _state.CompassState.RawMeasurement) > 5)
+            if (Math.Abs(replace.Body.RawMeasurement - _state.CompassState.RawMeasurement) > 0.01)
             {
-                _state.CompassState = replace.Body;
-      
+                if (_state.State.Equals(LogicalState.Forward)) {
+                  //  _state.State = LogicalState.Stop;
+                  //  _state.Dystance = 0d;
+                
+                }
+                
             }
+                _state.CompassState = replace.Body;
+               // _state.Dystance = 0d;
+                
+      
+            
         }
 
         /// <summary>

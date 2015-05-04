@@ -41,6 +41,14 @@ namespace RobcioDSS
 
         private sonar.SonarState _sonarState;
 
+        private Double dystance=0d;
+
+        public Double Dystance
+        {
+            get { return dystance; }
+            set { dystance = value; }
+        }
+
 
 
         public RobcioDSSState()
@@ -88,6 +96,8 @@ namespace RobcioDSS
             get { return _lightState; }
             set { _lightState = value; }
         }
+
+
 
         /// <summary>
         /// Compass state
@@ -156,9 +166,23 @@ namespace RobcioDSS
         /// </summary>
         Launch,
         /// <summary>
+        /// The robot launches the ball
+        /// </summary>
+        Restart,
+        /// <summary>
         /// The robot Clear
         /// </summary>        
         ClearAllTask,
+
+        /// <summary>
+        /// The robot Clear
+        /// </summary> 
+        StartRecording,
+
+        /// <summary>
+        /// The robot Clear
+        /// </summary> 
+        StopRecording,
 
         /// <summary>
         /// The robot stops

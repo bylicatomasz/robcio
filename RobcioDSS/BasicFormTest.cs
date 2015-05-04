@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using RobcioDSS.Action;
 using Microsoft.Ccr.Core;
-
+using mrptbridgerobcio;
 namespace RobcioDSS
 {
     public partial class BasicFormTest : Form
@@ -111,11 +111,28 @@ namespace RobcioDSS
 
         private void test_Click(object sender, EventArgs e)
         {
-
-
             ActionTaskCheckStatus check = new ActionTaskCheckStatus();
-            check.DateCheck = new DateTime();
-            portSetTaskRobcio.Post(check);
+            new ExportBridgeRobcio();
+
+            
+            //ActionTaskCheckStatus check = new ActionTaskCheckStatus();
+          //  check.DateCheck = new DateTime();
+           // portSetTaskRobcio.Post(check);
+        }
+
+        private void buttonStartRecording_Click(object sender, EventArgs e)
+        {
+            ActionTask action = new ActionTask();
+            action.State = LogicalState.StartRecording;
+            portSetTaskRobcio.Post(action);
+        }
+
+        private void buttonStopRecording_Click(object sender, EventArgs e)
+        {
+            ActionTask action = new ActionTask();
+            action.State = LogicalState.StopRecording;
+            portSetTaskRobcio.Post(action);
+
         }
 
 
